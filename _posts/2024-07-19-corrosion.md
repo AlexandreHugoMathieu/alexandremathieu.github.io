@@ -1,5 +1,5 @@
 ---
-title: 'Severe metallization corrosion: mechanisms, signatures and preventions'
+title: 'Severe metallization corrosion'
 date: 2024-07-19
 permalink: /posts/2024/07/Corrosion/
 tags:
@@ -34,7 +34,7 @@ On the other hand, corrosion of the metallization attacks the cell busbars and r
 
 Small levels of glass and metallization corrosion are expected over the PV module lifetime and are normally taken into account within module guarantees. However, advanced metallization corrosion levels might dramatically degrade module characteristics in the late stages of the nominal service life [3] decreasing the maximum power under 80% of the initial level specified in the datasheet. 
 
-Metallization is specifically triggered from the release of acid acetic which is produced from the encapsulant (usually EVA) through hydrolysis reaction in the presence of heat and water. Then, the encapsulant ability to retain water ingress and sensitivity to heat are key factors to apprehend corrosion levels [3], [7], [8]. UV stress was also considered as a potential factor facilitating acetic acid production [9]. Backsheet properties and delamination might also accelerate this process by letting the water progress into the PV material sandwich [3].
+Metallization corrosion is triggered from the release of acid acetic which is produced from the encapsulant (usually EVA) through hydrolysis reaction in the presence of heat and water. Then, the encapsulant ability to retain water ingress and sensitivity to heat are key factors to apprehend corrosion levels [3], [7], [8]. UV stress was also considered as a potential factor facilitating acetic acid production [9]. Backsheet properties and delamination might also accelerate this process by letting the water progress into the PV material sandwich [3].
 
 ## II. Signatures
 
@@ -46,15 +46,15 @@ Critical corrosion degradation commonly occurs at the end of module life and sig
     <figcaption> Figure 3: Graphs of PV cells HAc vapor IV parameters during exposure of PV cells to HAc vapor  </figcaption>
 </figure>
 
-A first decrease of Pmax comes from a reduction by FF followed by a decrease of Isc which leads to very low levels of Pmax down to 0.5 of the initial value for the best case. On the other hand, the open-circuit voltage has been proved to remain the same [3], [8]. 
+A first decrease of Pmax comes from a reduction by the Fill Factor (FF) followed by a decrease of short-circuit current (Isc) which leads to very low levels of Pmax down to 0.5 of the initial value for the best case. On the other hand, the open-circuit voltage (Voc) has been proved to remain the same [3], [8]. 
 
-The degradation processes have proven to exponentially decrease according to a sigmoid function as in equation (1) where P_sat is the asymptotic limit, t_0 is the period and s is the slope factor.
+The degradation processes have been modelled according to a sigmoid function as in equation (1) where $P_{sat}$ is the asymptotic limit, $t_0$ is the period and $s$ is the slope factor.
 
 $$  P(t) = P_{sat} + \frac{(1 - P_{sat})}{1 + \exp (\frac{t - t_0}{s})} $$ 
 
 Kontges et al. [3] further explain that the degradation can be broken down into two phases as shown in Figure 4.
 
-1. The first phase corresponds to the gradual decrease of the metallic connection under the metal grid which creates gaps between the fingers and the emitter surface to the point where the contact area is limited to silver (Ag) pillars [3]. This especially can be modeled by an increase in serial resistance [8], [10].
+1. The first phase corresponds to the gradual decrease of the metallic connection under the metal grid which creates gaps between the fingers and the emitter surface to the point where the contact area is limited to silver (Ag) pillars [3]. This especially can be modeled by an increase in serial resistance (Rs) [8], [10].
 2. The second phase corresponds to the change of electrical properties of those Ag pillar contacts which decreases the short-circuit current (Isc) [3].
 
 <figure>
@@ -64,7 +64,7 @@ Kontges et al. [3] further explain that the degradation can be broken down into 
 </figure>
 
 
-These degradations seem to be independent of each other [3] with inflection times that can be deducted from the activation energy Ea according to the Arrhenius law as in equation (2) [3], [8]. t1, t2 are two different inflection times associated with two different temperatures T1, T2 and kB is the Boltzmann constant.
+These two degradations seem to be independent of each other [3]. Inflection times from the same process (Isc of FF) are linked according to the Arrhenius law as in equation (2) with their estimated activation energy Ea [3], [8]. $t_1$, $t_2$ are two different inflection times of the process associated with two different temperatures $T_1$, $T_2$ and $k_B$ is the Boltzmann constant.
 
 $$  \frac{t_2}{t_1} = exp[-\frac{E_a}{k_B} \cdot (\frac{1}{T_2} - \frac{1}{T_1})] $$ 
 
@@ -95,9 +95,9 @@ Damp-heat tests are designed to determine the ability of the PV module to withst
 
 Some other ammonia tests according to the IEC 62716 [13] further assess the module resistance to corrosion. Given that ammonia has a relatively high corrosive effect, this test serves as a complement to the previously described damp-heat test.
 
-Poor manufacturing processes with imperfect soldering or the choice of poor materials [6] could facilitate corrosion degradations. Environmental factors can also accelerate the corrosion (e.g. ammonia, salt, humidity, temperature) for installations which are located, for instance, next to the sea or in hot climates [4], [6].
+Poor manufacturing processes with imperfect soldering or the choice of poor materials [6] facilitate corrosion. Environmental factors can also accelerate the corrosion (e.g. ammonia, salt, humidity, temperature) for OV installations which are located, for instance, next to the sea or in hot climates [4], [6].
 
-Then appropriate measures should be taken towards encapsulant of higher quality and better Water Vapor Transmission Rates (WVTR). One must note that bifacial glass modules have higher resistance to corrosion with typical lower WVTR. Limiting high temperatures within modules, when possible, would also extend the degradation of those. Avoiding cleaning modules with chemicals would also enable longer lifetimes.
+Therefore, appropriate measures should be taken towards encapsulant of higher quality and better Water Vapor Transmission Rates (WVTR). One must note that bifacial glass modules have higher resistance to corrosion with typical lower WVTR. Limiting high temperatures within modules, when possible, would also extend the degradation of those. Avoiding cleaning modules with chemicals would also enable longer lifetimes.
 
 ## References
 

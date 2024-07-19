@@ -1,5 +1,5 @@
 ---
-title: 'Light Induced Degradation (LID): A quick overview on the performance impact'
+title: 'Light Induced Degradation (LID)'
 date: 2023-08-28
 permalink: /posts/2023/08/lid/
 tags:
