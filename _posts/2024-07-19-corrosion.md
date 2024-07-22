@@ -95,7 +95,7 @@ Damp-heat tests are designed to determine the ability of the PV module to withst
 
 Some other ammonia tests according to the IEC 62716 [13] further assess the module resistance to corrosion. Given that ammonia has a relatively high corrosive effect, this test serves as a complement to the previously described damp-heat test.
 
-Poor manufacturing processes with imperfect soldering or the choice of poor materials [6] facilitate corrosion. Environmental factors can also accelerate the corrosion (e.g. ammonia, salt, humidity, temperature) for OV installations which are located, for instance, next to the sea or in hot climates [4], [6].
+Poor manufacturing processes with imperfect soldering or the choice of poor materials [6] facilitate corrosion. Environmental factors can also accelerate the corrosion (e.g. ammonia, salt, humidity, temperature) for PV installations which are located, for instance, next to the sea or in hot climates [4], [6].
 
 Therefore, appropriate measures should be taken towards encapsulant of higher quality and better Water Vapor Transmission Rates (WVTR). One must note that bifacial glass modules have higher resistance to corrosion with typical lower WVTR. Limiting high temperatures within modules, when possible, would also extend the degradation of those. Avoiding cleaning modules with chemicals would also enable longer lifetimes.
 
