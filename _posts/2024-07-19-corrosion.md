@@ -43,12 +43,12 @@ Critical corrosion degradation commonly occurs at the end of module life and sig
 <figure>
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/corrosion_images/IV_signature.PNG"
     width="100px">
-    <figcaption> Figure 3: Graphs of PV cells HAc vapor IV parameters during exposure of PV cells to HAc vapor  </figcaption>
+    <figcaption> Figure 3: PV cell IV parameters during exposure of PV cells to HAc vapor [7] </figcaption>
 </figure>
 
 A first decrease of Pmax comes from a reduction by the Fill Factor (FF) followed by a decrease of short-circuit current (Isc) which leads to very low levels of Pmax down to 0.5 of the initial value for the best case. On the other hand, the open-circuit voltage (Voc) has been proved to remain the same [3], [8]. 
 
-The degradation processes have been modelled according to a sigmoid function as in equation (1) where $P_{sat}$ is the asymptotic limit, $t_0$ is the period and $s$ is the slope factor.
+The degradation processes have been modelled according to a sigmoid function as in equation (1) where $P_{sat}$ is the asymptotic limit, $t_0$ is the period and $s$ is the slope factor [1].
 
 $$  P(t) = P_{sat} + \frac{(1 - P_{sat})}{1 + \exp (\frac{t - t_0}{s})} $$ 
 
@@ -64,11 +64,11 @@ Kontges et al. [3] further explain that the degradation can be broken down into 
 </figure>
 
 
-These two degradations seem to be independent of each other [3]. Inflection times from the same process (Isc of FF) are linked according to the Arrhenius law as in equation (2) with their estimated activation energy Ea [3], [8]. $t_1$, $t_2$ are two different inflection times of the process associated with two different temperatures $T_1$, $T_2$ and $k_B$ is the Boltzmann constant.
+These two degradations seem to be independent of each other [3]. Inflection times from the same degradation process (Isc of FF) are linked according to the Arrhenius law as in equation (2) with their estimated activation energy $E_a$ [3], [8]. $t_1$, $t_2$ are two different inflection times of the process associated with two different temperatures $T_1$, $T_2$ and $k_B$ is the Boltzmann constant.
 
 $$  \frac{t_2}{t_1} = exp[-\frac{E_a}{k_B} \cdot (\frac{1}{T_2} - \frac{1}{T_1})] $$ 
 
-The activation energies for FF-reduction have been estimated in the range of [0.41 to 0.51eV] [3] while the Isc-reduction energy is in the range of [0.54 - 0.7 eV] [3].
+The activation energies for FF-reduction have been estimated in the range of [0.41 - 0.51eV] [3] while the Isc-reduction energy is in the range of [0.54 - 0.7 eV] [3].
 
 At the end of the process, the degradation reaches a saturation phase with stable IV-characteristics.
 
