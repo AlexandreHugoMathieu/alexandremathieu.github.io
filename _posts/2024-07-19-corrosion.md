@@ -91,7 +91,7 @@ Corrosion can easily be recognized with visual inspections [4], [6]. Electrolumi
 
 ## V. Tests & Prevention
 
-Damp-heat tests are designed to determine the ability of the PV module to withstand long-term penetration of humidity. According to IEC 61215 [12], PV modules are exposed to a temperature of 85°C and a relative humidity 85% for 1000 h in the climatic chamber. If the degradation of the maximum output power exceeds 5%, the test fails.
+Damp-heat tests are designed to determine the ability of the PV module to withstand long-term penetration of humidity. According to IEC 61215 [12], PV modules are exposed to a temperature of 85°C and a relative humidity 85% for 1000 h in the climatic chamber.  If the maximum output power decreases by more than 5%, the test fails.
 
 Some other ammonia tests according to the IEC 62716 [13] further assess the module resistance to corrosion. Given that ammonia has a relatively high corrosive effect, this test serves as a complement to the previously described damp-heat test.
 
