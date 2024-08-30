@@ -2,12 +2,11 @@
 title: "Photovoltaic failure diagnosis"
 collection: publications
 permalink: /publication/2024-07-29-detection
-excerpt: 'Photovoltaic Failure Diagnosis using Combined approaches of Imaging Techniques and Electrical Characterization
-'
+excerpt: 'Article on photovoltaic detection methods'
 date: 2024-07-29
 ---
 
-Article on photovoltaic detection methods.
+
 
 This paper entitled "Photovoltaic Failure Diagnosis using Combined approaches of Imaging Techniques and Electrical Characterization" introduces an effective in-situ protocol to detect failures on PV installations.
 
