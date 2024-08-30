@@ -68,27 +68,24 @@ width="500">
 
 To illustrate this progressive loss, a cell crack has been simulated at 1000W/25°C and the effect on the whole module has been studied by assembling the IV-cell curves together at the module level assuming 3 substrings of 20 cells in serie connected with bypass diodes with an activation voltage of -0.5V. The cells are assumed to have a breakdown voltage of 15V.  Four cases have been examined with one cell getting an inactive area of 5%, 15%, 30% and 45% reducing the current generation proportionally on Figure 6. At 5%, the inequality (1) is still respected, and the operating point does not change significantly: the power is reduced only by 0.2%. For 15% and 35% of inactive area, the operating current is constrained by the cracked cell maximum current and the maximum power decreases by 5% and 19% respectively. Then, from 45% of inactive area, the bypass diode of the cracked substring gets activated, and the power is reduced by 35%.
 
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive5.PNG" 
-width="100%">
 
-Test
 
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive5.PNG" 
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive5.png" 
 width="100%">
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive15.PNG"
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive15.png"
 width="100%">
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive30.PNG"
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive30.png"
 width="100%">
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive45.PNG" 
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive45.png" 
 width="100%">
 <figcaption> Figure 6: Effect on the module IV-operations of different inactive areas from one cracked cell  </figcaption>
 
 In the case, of a higher breakdown voltage (-10V), the power loss follows the same trend until a certain point where the cell is reverse-biaised without activating the bypass diode at the substring level as in Figure 7. In that case, the cell “consumes” power and dissipates it which creates hotspots and this might be highly detrimental in the long term with higher degradation rates than expected.
 
 
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown10_inactive15.PNG" 
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown10_inactive15.png" 
 width="100%">
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown10_inactive30.PNG"
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown10_inactive30.png"
 width="100%">
 <figcaption> Figure 7: Effect on the module IV-operations of different inactive area levels of one cracked cell with a breakdown voltage equal to -10V 
 </figcaption>
@@ -102,10 +99,9 @@ Cells cracks also increase the recombination current in the cell junction [6], [
 
 Small cell cracks (micro-cracks) become visible by eye when they form snail tracks or when photobleaching as in Figure 6. Photobleaching is a counteracting effect to the yellowing of the encapsulant and it occurs along the cracks and the borders of the cells [4]. Cell cracks may be followed by the appearance of snail tracks, which are the result of the discoloration of the metallization of the silver electrodes and the discoloration of the EVA (ethylene-vinyl acetate) which typically occur 3 month to 1 year after  [4], [14]. However, those snail trails do not necessarily occur on all modules since it originates from a combination of different materials, UV radiation and temperature [4].
 
-<p align="center">
+
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/photobleach_snailtrack.PNG"
 width="80%">
-</p>
 <figcaption> Figure 8: Photobleaching (left) and snail trail (right) [1] </figcaption>
 
  
@@ -119,7 +115,7 @@ Fortunately, several ways to detect those cracks are already in use.
 - **Electroluminescence** (Figure 5, left) is the most common way to identify cracks. Combined with image recognition techniques, it can become a very efficient and accurate way of detecting crack spots. 
 
 
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/electroluminescence.PNG" align="center"
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/electroluminescence.PNG" 
 width="80%">
 <figcaption> Figure 9: Electroluminescence (left) and UV fluorescence (right) [15] </figcaption>
 
