@@ -11,7 +11,7 @@ Silicon within PV modules is brittle, and cell cracks are expected in the natura
 
 <figure>
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/intro.PNG"
-    width="60px">
+    width="300">
     <figcaption> Figure 1: PV module with cell cracks on the field </figcaption>
 </figure>
 
@@ -43,7 +43,7 @@ Some work [1] suggests a probability of 5%  to get a cracked cell from productio
 
 <figure>
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/crack_distribution.PNG"
-    width="80px">
+    width="350">
     <figcaption> Figure 3: Typical cell crack distribution [3] </figcaption>
 </figure>
 
@@ -57,7 +57,7 @@ However, in some extreme case, if the crack isolates some substantial cell area,
 
 <figure>
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/inactive_area.PNG"
-    width="80px">
+    width="300">
     <figcaption> Figure 4: Broken area distribution as function of crack type [3] </figcaption>
 </figure>
 
@@ -70,7 +70,7 @@ When this inequality is not respected (with an inactive area more than 8% in gen
 
 <figure>
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/powerloss.PNG"
-    width="80px">
+    width="250">
     <figcaption> Figure 5: Simulation of the power loss of a single 230 Wp PV module with a single solar cell having a varying inactive cell area. The simulated power loss of a 20 Modules array containing this defective module is also shown. [11]
  </figcaption>
 </figure>
@@ -108,7 +108,7 @@ Small cell cracks (micro-cracks) become visible by eye when they form snail trac
 
  <figure>
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/photobleach_snailtrack.PNG"
-    width="90px">
+    width="500">
     <figcaption> Figure 8: Photobleaching (left) and snail trail (right) [1] </figcaption>
 </figure>
  
@@ -123,7 +123,7 @@ Fortunately, several ways to detect those cracks are already in use.
 
  <figure>
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/electroluminescence.PNG"
-    width="100px">
+    width="500">
     <figcaption> Figure 9: Electroluminescence (left) and UV fluorescence (right) [15] </figcaption>
 </figure>
 
@@ -133,7 +133,7 @@ Fortunately, several ways to detect those cracks are already in use.
 
  <figure>
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/infrared.PNG"
-    width="100px">
+    width="500">
     <figcaption> Figure 10: Infrared thermography to detect cell cracks [16] </figcaption>
 </figure>
 

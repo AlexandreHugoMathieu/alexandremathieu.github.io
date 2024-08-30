@@ -83,8 +83,8 @@ Corrosion degradations are often spatially-anisotropic [3], [11] which would ind
 Corrosion can easily be recognized with visual inspections [4], [6]. Electroluminescence also reveals corrosion as in Figure 4. Given its IV-signatures with a decrease of Fill Factor (FF) due to an increase in serial resistance (Rs) and a decrease in short-circuit current (Isc), IV-tracing also becomes a way of identifying corrosion.
 
 <figure>
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/corrosion_images/corrosion_phases.PNG"
-    width="100px">
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/corrosion_images/electroluminescence.PNG"
+    width="100%">
     <figcaption> Figure 5: Evolution of electroluminescence images over damp-heat tests under 95°C/70% RH [11]  </figcaption>
 </figure>
 
