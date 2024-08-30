@@ -12,11 +12,12 @@ tags:
 **Light Induced Degradation (LID)**, or Light soaking effect, refers to changes in module power performance due to light exposure and could potentially entail losses up to 30%. 
 This article provides an overview on the impact, the loss mechanisms and how to detect LID.  
 
-<figure>
+ <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/lid_images/lid_main_pictures.png"
-    width="100px">
+    width="40%">
     <figcaption> PV cell with LID degradation (Kwapil et al., 2020) </figcaption>
-</figure>
+&nbsp;
+</div>
 
 Technology dependency
 ======
@@ -27,10 +28,11 @@ This appears as a degradation of few percentages within the first exposure hours
 On the other hand, the amorphous silicon (a-Si) can be impacted up to 10-30 % (Gostein and Dun, 2011) within the first months of outdoor exposure due to the **“Staebler–Wronski Effect” (SWE)** discovered, as you can assume, from D.L Staebler and C.R  Wronski in 1977.  In the a-Si modules, the effect constantly switches between thermal-induced regeneration, generally in summer, and degradation, in winter, can lead to a seasonal variation in performance of 0-15 % (Herz et al., 2022). 
 Some other technologies like CIS/CIGS actually benefit from this effect with a gain of 7-15% for CIS (Gostein and Dun, 2011).
 
-<figure>
+ <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/lid_images/lid_figures.PNG">
     <figcaption> LID performance loss figures from literature </figcaption>
-</figure>
+&nbsp;
+</div>
 
 Degradation Mechanisms
 ======
@@ -47,10 +49,11 @@ characteristics of the PV cell. However, after some time, the cell naturally tra
 to a third, regenerated, state C thanks to the inclusion of hydrogen which cancels 
 the electron-hole trap effect from state B.
 
-<figure>
+ <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/lid_images/lid_state.png">
     <figcaption> Performance as function of exposure time (Woodhouse et al., 2020) </figcaption>
-</figure>
+&nbsp;
+</div>
 
 More precisely, the state B uninterruptedly switches through different atomic structures
 which captures electrons and holes. As mentioned in (Du et al., 2005), 4 different 
@@ -58,10 +61,11 @@ reactions sequentially take place, and the degradation speed is linearly and
 quadratically dependant from the Boron and Oxygen concentrations respectively 
 (Rabelo et al., 2021). 
 
-<figure>
+ <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/lid_images/lid_mechanisms.png">
     <figcaption> Boron-Oxygen chemical mechanisms according to Du et al. (Du et al., 2005) </figcaption>
-</figure>
+&nbsp;
+</div>
 
 The Light and elevated Temperature Induced Degradation (LeTID) is a variant of LID in
 the multicrystalline PV cells and occurs with active temperature over 65° C. The LeTID 
@@ -84,10 +88,11 @@ Voltage (Voc). Naturally, the maximum power point (Pmpp) also decreases. Some
 detrimental consequences might be the apparition of mismatches which trigger hot 
 spots and accelerate ageing.
 
-<figure>
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/lid_images/iv_tracer.png">
+ <div align="center">
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/lid_images/iv_tracer.png" width="70%">
     <figcaption> LID IV signature (da Silva et al., 2021) </figcaption>
-</figure>
+&nbsp;
+</div>
 
 References
 ------

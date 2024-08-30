@@ -9,11 +9,12 @@ tags:
 
 Degradations induced from water ingress have the potential to trigger critical levels of corrosion which have been demonstrated to decrease the module maximum power by 80% in the worst-case during damp-heat tests [1].
 
-<figure>
+<div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/corrosion_images/corrosion_examples.PNG"
     width="100px">
     <figcaption> Figure 1: Corrosion illustrations ([2] left, [3] middle and right) </figcaption>
-</figure>
+&nbsp;
+</div>
 
 
 This blog post investigates the effects of corrosion in photovoltaic modules. It starts by giving an overview and describing the mechanisms. Then, the electrical signature is presented as well as the interactions with other anomalies. Detection methods are briefly listed, and prevention considerations are discussed.
@@ -26,11 +27,12 @@ On one hand, corrosion losses which affect the PV module transmittance (glass, a
 
 On the other hand, corrosion of the metallization attacks the cell busbars and ribbons on the PV panel shown in Figure 2.
 
-<figure>
+<div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/corrosion_images/metal_grid.PNG"
     width="100px">
     <figcaption> Figure 2: Typical metal grid of a PV panel  </figcaption>
-</figure>
+&nbsp;
+</div>
 
 Small levels of glass and metallization corrosion are expected over the PV module lifetime and are normally taken into account within module guarantees. However, advanced metallization corrosion levels might dramatically degrade module characteristics in the late stages of the nominal service life [3] decreasing the maximum power under 80% of the initial level specified in the datasheet. 
 
@@ -40,11 +42,12 @@ Metallization corrosion is triggered from the release of acid acetic which is pr
 
 Critical corrosion degradation commonly occurs at the end of module life and significantly reduces PV panel performance. Figure 3 shows the IV characteristics of base c-Si PV cells undergoing prolonged exposure to hygrothermal vapors over saturated potassium chloride (KCl) solution containing 3% of acid acetic (HAc) with fixed temperatures in the [65-85°C] range [3].
 
-<figure>
+<div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/corrosion_images/IV_signature.PNG"
     width="100px">
     <figcaption> Figure 3: PV cell IV parameters during exposure of PV cells to HAc vapor [7] </figcaption>
-</figure>
+&nbsp;
+</div>
 
 A first decrease of Pmax comes from a reduction by the Fill Factor (FF) followed by a decrease of short-circuit current (Isc) which leads to very low levels of Pmax down to 0.5 of the initial value for the best case. On the other hand, the open-circuit voltage (Voc) has been proved to remain the same [3], [8]. 
 
@@ -57,11 +60,12 @@ Kontges et al. [3] further explain that the degradation can be broken down into 
 1. The first phase corresponds to the gradual decrease of the metallic connection under the metal grid which creates gaps between the fingers and the emitter surface to the point where the contact area is limited to silver (Ag) pillars [3]. This especially can be modeled by an increase in serial resistance (Rs) [8], [10].
 2. The second phase corresponds to the change of electrical properties of those Ag pillar contacts which decreases the short-circuit current (Isc) [3].
 
-<figure>
+<div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/corrosion_images/corrosion_phases.PNG"
     width="100px">
     <figcaption> Figure 4: Degradation phases of c-Si PV cells exposed to HAc vapor [3]  </figcaption>
-</figure>
+&nbsp;
+</div>
 
 
 These two degradations seem to be independent of each other [3]. Inflection times from the same degradation process (Isc of FF) are linked according to the Arrhenius law as in equation (2) with their estimated activation energy $E_a$ [3], [8]. $t_1$, $t_2$ are two different inflection times of the process associated with two different temperatures $T_1$, $T_2$ and $k_B$ is the Boltzmann constant.
@@ -82,11 +86,14 @@ Corrosion degradations are often spatially-anisotropic [3], [11] which would ind
 
 Corrosion can easily be recognized with visual inspections [4], [6]. Electroluminescence also reveals corrosion as in Figure 4. Given its IV-signatures with a decrease of Fill Factor (FF) due to an increase in serial resistance (Rs) and a decrease in short-circuit current (Isc), IV-tracing also becomes a way of identifying corrosion.
 
-<figure>
+<div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/corrosion_images/electroluminescence.PNG"
-    width="100%">
+    width="80%">
     <figcaption> Figure 5: Evolution of electroluminescence images over damp-heat tests under 95°C/70% RH [11]  </figcaption>
-</figure>
+&nbsp;
+</div>
+
+
 
 
 ## V. Tests & Prevention
