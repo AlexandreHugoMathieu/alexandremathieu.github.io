@@ -11,7 +11,7 @@ tags:
 Silicon within PV modules is brittle, and cell cracks are expected in the natural aging of PV modules. However, some severe cracks might lead to **high mismatches**, potentially **activate bypass diodes**, and significantly decrease power module performances. 
 
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/intro.PNG"
-width="70%">
+width="50%">
 <figcaption> Figure 1: PV module with cell cracks on the field </figcaption>
 
 This blog post presents an overview of cell cracks with the different types, when those occur over time, the signatures, the concomittant failures and the associated detection methods.
@@ -38,7 +38,7 @@ Cell cracks appear inhomogeneously in PV systems [6]. According to Kontges et al
 Some work [1] suggests a probability of 5%  to get a cracked cell from production and field data. As illustration, a distribution of cell cracks from a PV-system on the field which is particularly affected from cracks [3] is shown in Figure 1.
 
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/crack_distribution.PNG"
-width="70%">
+width="50%">
 <figcaption> Figure 3: Typical cell crack distribution [3] </figcaption>
 
 Cell cracks dominate early failures in years one and two after installation [6], [8], [9].  The reported PV modules from the field with cell cracks amount to around 2% for moderate climates [6], [10].
@@ -50,7 +50,7 @@ Overall, the cell crack effect is moderate with global degradation rate remainin
 However, in some extreme case, if the crack isolates some substantial cell area, some more significant power losses occur as shown on Figure 4 as function of the cell crack types. 
 
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/inactive_area.PNG"
-width="70%">
+width="50%">
 <figcaption> Figure 4: Broken area distribution as function of crack type [3] </figcaption>
 
 
@@ -61,10 +61,12 @@ $$  \frac{A_{inactive}}{A_{total}} < \frac{I_{sc}-I_{mpp}}{I_{sc}}  $$
 
 When this inequality is not respected (with an inactive area more than 8% in general), it will lead to a power loss roughly linearly [1] as shown on Figure 5 (dotted line). Before that, no significant loss is observed. With a breakdown voltage greater than 15 V, in between approximately 12 and 50% of inactive cell area of a single cell in the PV module the power loss increases nearly linear from zero to the power of one double string for cells [11], [12]. Finally, an inactive area greater than 50% would lead to the activation of the bypass diode [1].
 
+<div align="center">
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/powerloss.PNG"
 width="500">
 <figcaption> Figure 5: Simulation of the power loss of a single 230 Wp PV module with a single solar cell having a varying inactive cell area. The simulated power loss of a 20 Modules array containing this defective module is also shown. [11]
 </figcaption>
+</div>
 
 To illustrate this progressive loss, a cell crack has been simulated at 1000W/25°C and the effect on the whole module has been studied by assembling the IV-cell curves together at the module level assuming 3 substrings of 20 cells in serie connected with bypass diodes with an activation voltage of -0.5V. The cells are assumed to have a breakdown voltage of 15V.  Four cases have been examined with one cell getting an inactive area of 5%, 15%, 30% and 45% reducing the current generation proportionally on Figure 6. At 5%, the inequality (1) is still respected, and the operating point does not change significantly: the power is reduced only by 0.2%. For 15% and 35% of inactive area, the operating current is constrained by the cracked cell maximum current and the maximum power decreases by 5% and 19% respectively. Then, from 45% of inactive area, the bypass diode of the cracked substring gets activated, and the power is reduced by 35%.
 
