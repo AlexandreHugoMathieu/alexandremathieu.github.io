@@ -10,19 +10,23 @@ tags:
 
 Silicon within PV modules is brittle, and cell cracks are expected in the natural aging of PV modules. However, some severe cracks might lead to **high mismatches**, potentially **activate bypass diodes**, and significantly decrease power module performances. 
 
+<div align="center">
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/intro.PNG"
 width="50%">
 <figcaption> Figure 1: PV module with cell cracks on the field </figcaption>
+</div>
 
 This blog post presents an overview of cell cracks with the different types, when those occur over time, the signatures, the concomittant failures and the associated detection methods.
 
 ## I. Overview
 
 PV cells are fragile and are highly subject to cracks with various sizes and orientations [1].  Six crack categories have been defined [2] and completed with a seventh from Morlier et al [3], the so-called cross crack, which is caused by needles pressing on the wafer during production [1], [2]. A repetitive crack pattern could be caused by a production failure, whereas PV modules showing dendritic crack patterns have been probably exposed to heavy mechanical loads.[4]
- 
+
+<div align="center">
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/cracktype.PNG"
 width="100%">
 <figcaption> Figure 2: Crack types [2], [3]</figcaption>
+</div>
 
 Those cracks usually originate and expand over time due to mechanical and thermal stresses. The root causes originate from different stages [1], [5]:
 
@@ -37,9 +41,11 @@ Cell cracks appear inhomogeneously in PV systems [6]. According to Kontges et al
 
 Some work [1] suggests a probability of 5%  to get a cracked cell from production and field data. As illustration, a distribution of cell cracks from a PV-system on the field which is particularly affected from cracks [3] is shown in Figure 1.
 
+<div align="center">
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/crack_distribution.PNG"
 width="50%">
 <figcaption> Figure 3: Typical cell crack distribution [3] </figcaption>
+</div>
 
 Cell cracks dominate early failures in years one and two after installation [6], [8], [9].  The reported PV modules from the field with cell cracks amount to around 2% for moderate climates [6], [10].
 	
@@ -49,10 +55,11 @@ The power loss induced from cell cracks is challenging to quantify and depends o
 Overall, the cell crack effect is moderate with global degradation rate remaining at reasonable levels below 3% per year for all climate zones, except for cold and snowy zones, where the degradation rates of the affected part are highest with approximately 8% per year [6].
 However, in some extreme case, if the crack isolates some substantial cell area, some more significant power losses occur as shown on Figure 4 as function of the cell crack types. 
 
+<div align="center">
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/inactive_area.PNG"
 width="50%">
 <figcaption> Figure 4: Broken area distribution as function of crack type [3] </figcaption>
-
+</div>
 
 An inactive (or isolated) cell part means that this particular part of the photovoltaic cell no longer contributes to the total power output of the solar module [1].  Isc, is proportional to the total active cell area and if this area is reduced so the Isc goes under Impp, the voltage over the broken cell becomes reverse biased and induce some more significant losses. A defective cell stays in forward biais if the following equation is respected.
 
@@ -71,7 +78,7 @@ width="500">
 To illustrate this progressive loss, a cell crack has been simulated at 1000W/25°C and the effect on the whole module has been studied by assembling the IV-cell curves together at the module level assuming 3 substrings of 20 cells in serie connected with bypass diodes with an activation voltage of -0.5V. The cells are assumed to have a breakdown voltage of 15V.  Four cases have been examined with one cell getting an inactive area of 5%, 15%, 30% and 45% reducing the current generation proportionally on Figure 6. At 5%, the inequality (1) is still respected, and the operating point does not change significantly: the power is reduced only by 0.2%. For 15% and 35% of inactive area, the operating current is constrained by the cracked cell maximum current and the maximum power decreases by 5% and 19% respectively. Then, from 45% of inactive area, the bypass diode of the cracked substring gets activated, and the power is reduced by 35%.
 
 
-
+<div align="center">
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive5.png" 
 width="100%">
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive15.png"
@@ -81,17 +88,18 @@ width="100%">
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive45.png" 
 width="100%">
 <figcaption> Figure 6: Effect on the module IV-operations of different inactive areas from one cracked cell  </figcaption>
+</div>
 
 In the case, of a higher breakdown voltage (-10V), the power loss follows the same trend until a certain point where the cell is reverse-biaised without activating the bypass diode at the substring level as in Figure 7. In that case, the cell “consumes” power and dissipates it which creates hotspots and this might be highly detrimental in the long term with higher degradation rates than expected.
 
-
+<div align="center">
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown10_inactive15.png" 
 width="100%">
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown10_inactive30.png"
 width="100%">
 <figcaption> Figure 7: Effect on the module IV-operations of different inactive area levels of one cracked cell with a breakdown voltage equal to -10V 
 </figcaption>
-
+</div>
  
 A reduction in current is the major contribution to the loss of power [6], [8] due to a reduction in current that is not generated from isolated parts. However, cracks on the electrical circuit would also increase the resistance in series.  This increase in resistance typically accounts for less than one third of the power loss [6]. 
 
@@ -101,11 +109,11 @@ Cells cracks also increase the recombination current in the cell junction [6], [
 
 Small cell cracks (micro-cracks) become visible by eye when they form snail tracks or when photobleaching as in Figure 6. Photobleaching is a counteracting effect to the yellowing of the encapsulant and it occurs along the cracks and the borders of the cells [4]. Cell cracks may be followed by the appearance of snail tracks, which are the result of the discoloration of the metallization of the silver electrodes and the discoloration of the EVA (ethylene-vinyl acetate) which typically occur 3 month to 1 year after  [4], [14]. However, those snail trails do not necessarily occur on all modules since it originates from a combination of different materials, UV radiation and temperature [4].
 
-
+<div align="center">
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/photobleach_snailtrack.PNG"
 width="80%">
 <figcaption> Figure 8: Photobleaching (left) and snail trail (right) [1] </figcaption>
-
+</div>
  
 Delamination along the crack can also occur [6]. On another note, hot spots might happen when the cell is reversed biased and may accelerate delamination. [11].
 	
@@ -116,21 +124,22 @@ Fortunately, several ways to detect those cracks are already in use.
 - **Visual inspection** will often not detect those cracks if they have not developed snail trails or photobleaching. 
 - **Electroluminescence** (Figure 5, left) is the most common way to identify cracks. Combined with image recognition techniques, it can become a very efficient and accurate way of detecting crack spots. 
 
-
+<div align="center">
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/electroluminescence.PNG" 
 width="80%">
 <figcaption> Figure 9: Electroluminescence (left) and UV fluorescence (right) [15] </figcaption>
-
+</div>
 
 - **UV fluorescence** as illustrated in Figure 5 (right) can also identify cell cracks. 
 - **Photoluminescence** is also a technique to locate cracks. 
 - If the cell is reverse-biased, the cell will appear hotter than the rest of the module. **Infrared thermography** can then detect it as shown in Figure 6., and with high resolution, the isolated parts can also be identified.
 
-
+<div align="center">
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/infrared.PNG"
 width="80%">
 <figcaption> Figure 10: Infrared thermography to detect cell cracks [16] </figcaption>
-
+&nbsp;
+</div>
 
 - Accurate **IV-tracing** could potentially detect changes in the resistance in series, current mismatches and recombination factors for cell cracks which has a significant impact on the module performance.
 
