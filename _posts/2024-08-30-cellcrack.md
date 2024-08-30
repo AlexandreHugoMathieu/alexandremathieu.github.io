@@ -84,13 +84,13 @@ To illustrate this progressive loss, a cell crack has been simulated at 1000W/25
 
 
 <div align="center">
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive5.png" 
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown-15_inactive5.png" 
 width="100%">
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive15.png"
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown-15_inactive15.png"
 width="100%">
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive30.png"
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown-15_inactive30.png"
 width="100%">
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive45.png" 
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown-15_inactive45.png" 
 width="100%">
 <figcaption> Figure 6: Effect on the module IV-operations of different inactive areas from one cracked cell  </figcaption>
 &nbsp;
@@ -99,9 +99,9 @@ width="100%">
 In the case, of a higher breakdown voltage (-10V), the power loss follows the same trend until a certain point where the cell is reverse-biaised without activating the bypass diode at the substring level as in Figure 7. In that case, the cell “consumes” power and dissipates it which creates hotspots and this might be highly detrimental in the long term with higher degradation rates than expected.
 
 <div align="center">
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown10_inactive15.png" 
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown-10_inactive15.png" 
 width="100%">
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown10_inactive30.png"
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown-10_inactive30.png"
 width="100%">
 <figcaption> Figure 7: Effect on the module IV-operations of different inactive area levels of one cracked cell with a breakdown voltage equal to -10V 
 </figcaption>
