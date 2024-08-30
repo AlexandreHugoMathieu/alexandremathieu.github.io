@@ -133,7 +133,7 @@ Fortunately, several ways to detect those cracks are already in use.
 
  <figure>
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/infrared.PNG"
-    width="500">
+    width="50">
     <figcaption> Figure 10: Infrared thermography to detect cell cracks [16] </figcaption>
 </figure>
 
