@@ -131,11 +131,11 @@ Fortunately, several ways to detect those cracks are already in use.
 - **Photoluminescence** is also a technique to locate cracks. 
 - If the cell is reverse-biased, the cell will appear hotter than the rest of the module. **Infrared thermography** can then detect it as shown in Figure 6., and with high resolution, the isolated parts can also be identified.
 
- <figure>
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/infrared.PNG"
-    width="50">
-    <figcaption> Figure 10: Infrared thermography to detect cell cracks [16] </figcaption>
-</figure>
+
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/infrared.PNG"
+width="50">
+<figcaption> Figure 10: Infrared thermography to detect cell cracks [16] </figcaption>
+
 
 - Accurate **IV-tracing** could potentially detect changes in the resistance in series, current mismatches and recombination factors for cell cracks which has a significant impact on the module performance.
 
