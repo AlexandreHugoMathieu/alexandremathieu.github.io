@@ -11,7 +11,7 @@ Degradations induced from water ingress have the potential to trigger critical l
 
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/corrosion_images/corrosion_examples.PNG"
-    width="100px">
+    width="100%">
     <figcaption> Figure 1: Corrosion illustrations ([2] left, [3] middle and right) </figcaption>
 &nbsp;
 </div>
@@ -29,7 +29,7 @@ On the other hand, corrosion of the metallization attacks the cell busbars and r
 
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/corrosion_images/metal_grid.PNG"
-    width="100px">
+    width="100%">
     <figcaption> Figure 2: Typical metal grid of a PV panel  </figcaption>
 &nbsp;
 </div>
@@ -44,7 +44,7 @@ Critical corrosion degradation commonly occurs at the end of module life and sig
 
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/corrosion_images/IV_signature.PNG"
-    width="100px">
+    width="100%">
     <figcaption> Figure 3: PV cell IV parameters during exposure of PV cells to HAc vapor [7] </figcaption>
 &nbsp;
 </div>
@@ -62,7 +62,7 @@ Kontges et al. [3] further explain that the degradation can be broken down into 
 
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/corrosion_images/corrosion_phases.PNG"
-    width="100px">
+    width="100%">
     <figcaption> Figure 4: Degradation phases of c-Si PV cells exposed to HAc vapor [3]  </figcaption>
 &nbsp;
 </div>
