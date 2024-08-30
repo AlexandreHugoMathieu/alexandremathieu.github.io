@@ -10,11 +10,9 @@ tags:
 
 Silicon within PV modules is brittle, and cell cracks are expected in the natural aging of PV modules. However, some severe cracks might lead to **high mismatches**, potentially **activate bypass diodes**, and significantly decrease power module performances. 
 
-<figure>
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/intro.PNG"
-    width="300">
-    <figcaption> Figure 1: PV module with cell cracks on the field </figcaption>
-</figure>
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/intro.PNG"
+width="500">
+<figcaption> Figure 1: PV module with cell cracks on the field </figcaption>
 
 This blog post presents an overview of cell cracks with the different types, when those occur over time, the signatures, the concomittant failures and the associated detection methods.
 
@@ -51,7 +49,6 @@ The power loss induced from cell cracks is challenging to quantify and depends o
 Overall, the cell crack effect is moderate with global degradation rate remaining at reasonable levels below 3% per year for all climate zones, except for cold and snowy zones, where the degradation rates of the affected part are highest with approximately 8% per year [6].
 However, in some extreme case, if the crack isolates some substantial cell area, some more significant power losses occur as shown on Figure 4 as function of the cell crack types. 
 
-
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/inactive_area.PNG"
 width="500">
 <figcaption> Figure 4: Broken area distribution as function of crack type [3] </figcaption>
@@ -64,31 +61,30 @@ $$  \frac{A_{inactive}}{A_{total}} < \frac{I_{sc}-I_{mpp}}{I_{sc}}  $$
 
 When this inequality is not respected (with an inactive area more than 8% in general), it will lead to a power loss roughly linearly [1] as shown on Figure 5 (dotted line). Before that, no significant loss is observed. With a breakdown voltage greater than 15 V, in between approximately 12 and 50% of inactive cell area of a single cell in the PV module the power loss increases nearly linear from zero to the power of one double string for cells [11], [12]. Finally, an inactive area greater than 50% would lead to the activation of the bypass diode [1].
 
-
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/powerloss.PNG"
 width="500">
 <figcaption> Figure 5: Simulation of the power loss of a single 230 Wp PV module with a single solar cell having a varying inactive cell area. The simulated power loss of a 20 Modules array containing this defective module is also shown. [11]
 </figcaption>
 
-
-
 To illustrate this progressive loss, a cell crack has been simulated at 1000W/25°C and the effect on the whole module has been studied by assembling the IV-cell curves together at the module level assuming 3 substrings of 20 cells in serie connected with bypass diodes with an activation voltage of -0.5V. The cells are assumed to have a breakdown voltage of 15V.  Four cases have been examined with one cell getting an inactive area of 5%, 15%, 30% and 45% reducing the current generation proportionally on Figure 6. At 5%, the inequality (1) is still respected, and the operating point does not change significantly: the power is reduced only by 0.2%. For 15% and 35% of inactive area, the operating current is constrained by the cracked cell maximum current and the maximum power decreases by 5% and 19% respectively. Then, from 45% of inactive area, the bypass diode of the cracked substring gets activated, and the power is reduced by 35%.
- 
- 
- 
 
- <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive5.PNG"
-width="100%">
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive15.PNG" width="100%">
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive30.PNG" width="100%">
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive45.PNG" width="100%">
+ <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive5.PNG" 
+ width="100%">
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive15.PNG"
+ width="100%">
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive30.PNG"
+ width="100%">
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive45.PNG" 
+ width="100%">
 <figcaption> Figure 6: Effect on the module IV-operations of different inactive areas from one cracked cell  </figcaption>
 
 In the case, of a higher breakdown voltage (-10V), the power loss follows the same trend until a certain point where the cell is reverse-biaised without activating the bypass diode at the substring level as in Figure 7. In that case, the cell “consumes” power and dissipates it which creates hotspots and this might be highly detrimental in the long term with higher degradation rates than expected.
 
 
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown10_inactive15.PNG" width="100%">
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown10_inactive30.PNG" width="100%">
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown10_inactive15.PNG" 
+width="100%">
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown10_inactive30.PNG"
+width="100%">
 <figcaption> Figure 7: Effect on the module IV-operations of different inactive area levels of one cracked cell with a breakdown voltage equal to -10V 
 </figcaption>
 
@@ -103,7 +99,7 @@ Small cell cracks (micro-cracks) become visible by eye when they form snail trac
 
 
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/photobleach_snailtrack.PNG"
-width="500">
+width="80%">
 <figcaption> Figure 8: Photobleaching (left) and snail trail (right) [1] </figcaption>
 
  
@@ -118,7 +114,7 @@ Fortunately, several ways to detect those cracks are already in use.
 
 
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/electroluminescence.PNG"
-width="500">
+width="80%">
 <figcaption> Figure 9: Electroluminescence (left) and UV fluorescence (right) [15] </figcaption>
 
 
