@@ -11,7 +11,7 @@ Silicon within PV modules is brittle, and cell cracks are expected in the natura
 
 <figure>
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/intro.PNG"
-    width="80px">
+    width="60px">
     <figcaption> Figure 1: PV module with cell cracks on the field </figcaption>
 </figure>
 
@@ -81,20 +81,19 @@ To illustrate this progressive loss, a cell crack has been simulated at 1000W/25
  
  
  <figure>
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown-15_inactive5.PNG" width="100px">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown-15_inactive15.PNG" width="100px">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown-15_inactive30.PNG" width="100px">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown-15_inactive45.PNG" width="100px">
-    
-    <figcaption> Figure 6: Effect on the module IV-operations of different inactive areas from one cracked cell 
- </figcaption>
+ <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive5.PNG"
+width="100px">
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive15.PNG" width="100px">
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive30.PNG" width="100px">
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown15_inactive45.PNG" width="100px">
+    <figcaption> Figure 6: Effect on the module IV-operations of different inactive areas from one cracked cell  </figcaption>
 </figure>
 
 In the case, of a higher breakdown voltage (-10V), the power loss follows the same trend until a certain point where the cell is reverse-biaised without activating the bypass diode at the substring level as in Figure 7. In that case, the cell “consumes” power and dissipates it which creates hotspots and this might be highly detrimental in the long term with higher degradation rates than expected.
 
  <figure>
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown-10_inactive15.PNG" width="100px">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown-10_inactive30.PNG" width="100px">
+  <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown10_inactive15.PNG" width="100px">
+     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/iv_curves_module_breakdown10_inactive30.PNG" width="100px">
     <figcaption> Figure 7: Effect on the module IV-operations of different inactive area levels of one cracked cell with a breakdown voltage equal to -10V 
  </figcaption>
 </figure>
@@ -123,7 +122,7 @@ Fortunately, several ways to detect those cracks are already in use.
 - **Electroluminescence** (Figure 5, left) is the most common way to identify cracks. Combined with image recognition techniques, it can become a very efficient and accurate way of detecting crack spots. 
 
  <figure>
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/infrared.PNG"
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/electroluminescence.PNG"
     width="100px">
     <figcaption> Figure 9: Electroluminescence (left) and UV fluorescence (right) [15] </figcaption>
 </figure>
@@ -133,7 +132,7 @@ Fortunately, several ways to detect those cracks are already in use.
 - If the cell is reverse-biased, the cell will appear hotter than the rest of the module. **Infrared thermography** can then detect it as shown in Figure 6., and with high resolution, the isolated parts can also be identified.
 
  <figure>
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/intro.PNG"
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/infrared.PNG"
     width="100px">
     <figcaption> Figure 10: Infrared thermography to detect cell cracks [16] </figcaption>
 </figure>
