@@ -102,9 +102,10 @@ Cells cracks also increase the recombination current in the cell junction [6], [
 
 Small cell cracks (micro-cracks) become visible by eye when they form snail tracks or when photobleaching as in Figure 6. Photobleaching is a counteracting effect to the yellowing of the encapsulant and it occurs along the cracks and the borders of the cells [4]. Cell cracks may be followed by the appearance of snail tracks, which are the result of the discoloration of the metallization of the silver electrodes and the discoloration of the EVA (ethylene-vinyl acetate) which typically occur 3 month to 1 year after  [4], [14]. However, those snail trails do not necessarily occur on all modules since it originates from a combination of different materials, UV radiation and temperature [4].
 
-
+<p align="center">
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/photobleach_snailtrack.PNG"
 width="80%">
+</p>
 <figcaption> Figure 8: Photobleaching (left) and snail trail (right) [1] </figcaption>
 
  
@@ -118,7 +119,7 @@ Fortunately, several ways to detect those cracks are already in use.
 - **Electroluminescence** (Figure 5, left) is the most common way to identify cracks. Combined with image recognition techniques, it can become a very efficient and accurate way of detecting crack spots. 
 
 
-<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/electroluminescence.PNG"
+<img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/electroluminescence.PNG" align="center"
 width="80%">
 <figcaption> Figure 9: Electroluminescence (left) and UV fluorescence (right) [15] </figcaption>
 
