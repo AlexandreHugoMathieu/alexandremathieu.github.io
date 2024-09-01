@@ -41,7 +41,7 @@ Those cracks usually originate and expand over time due to mechanical and therma
 
 Cell cracks appear inhomogeneously in PV systems [6]. According to Kontges et al., it is still unknown with which probability cell cracks occur in a given environment [7]. The crack evolution over time and climate influences on the crack development are still up to investigations [6]. 
 
-Some work [1] suggests a probability of 5%  to get a cracked cell from production and field data. As illustration, a distribution of cell cracks from a PV-system on the field which is particularly affected from cracks [3] is shown in Figure 1.
+Some work [1] suggests a probability of 5%  to get a cracked cell from production and field data. As illustration, a distribution of cell cracks from a PV-system on the field which is particularly affected from cracks [3] is shown in Figure 3.
 
 <div align="center">
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/crack_distribution.PNG"
@@ -114,7 +114,7 @@ Cells cracks also increase the recombination current in the cell junction [6], [
 
 ## IV. Concomitant failures
 
-Small cell cracks (micro-cracks) become visible by eye when they form snail tracks or when photobleaching as in Figure 6. Photobleaching is a counteracting effect to the yellowing of the encapsulant and it occurs along the cracks and the borders of the cells [4]. Cell cracks may be followed by the appearance of snail tracks, which are the result of the discoloration of the metallization of the silver electrodes and the discoloration of the EVA (ethylene-vinyl acetate) which typically occur 3 month to 1 year after  [4], [14]. However, those snail trails do not necessarily occur on all modules since it originates from a combination of different materials, UV radiation and temperature [4].
+Small cell cracks (micro-cracks) become visible by eye when they form snail tracks or when photobleaching as in Figure 8. Photobleaching is a counteracting effect to the yellowing of the encapsulant and it occurs along the cracks and the borders of the cells [4]. Cell cracks may be followed by the appearance of snail tracks, which are the result of the discoloration of the metallization of the silver electrodes and the discoloration of the EVA (ethylene-vinyl acetate) which typically occur 3 month to 1 year after  [4], [14]. However, those snail trails do not necessarily occur on all modules since it originates from a combination of different materials, UV radiation and temperature [4].
 
 <div align="center">
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/photobleach_snailtrack.PNG"
@@ -130,7 +130,7 @@ Delamination along the crack can also occur [6]. On another note, hot spots migh
 Fortunately, several ways to detect those cracks are already in use. 
 
 - **Visual inspection** will often not detect those cracks if they have not developed snail trails or photobleaching. 
-- **Electroluminescence** (Figure 5, left) is the most common way to identify cracks. Combined with image recognition techniques, it can become a very efficient and accurate way of detecting crack spots. 
+- **Electroluminescence** (Figure 9, left) is the most common way to identify cracks. Combined with image recognition techniques, it can become a very efficient and accurate way of detecting crack spots. 
 
 <div align="center">
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/electroluminescence.PNG" 
@@ -139,9 +139,9 @@ width="80%">
 &nbsp;
 </div>
 
-- **UV fluorescence** as illustrated in Figure 5 (right) can also identify cell cracks. 
+- **UV fluorescence** as illustrated in Figure 9 (right) can also identify cell cracks. 
 - **Photoluminescence** is also a technique to locate cracks. 
-- If the cell is reverse-biased, the cell will appear hotter than the rest of the module. **Infrared thermography** can then detect it as shown in Figure 6., and with high resolution, the isolated parts can also be identified.
+- If the cell is reverse-biased, the cell will appear hotter than the rest of the module. **Infrared thermography** can then detect it as shown in Figure 10, and with high resolution, the isolated parts can also be identified.
 
 <div align="center">
 <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/cellcrack_images/infrared.PNG"
