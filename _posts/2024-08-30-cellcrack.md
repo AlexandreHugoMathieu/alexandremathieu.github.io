@@ -1,7 +1,7 @@
 ---
 title: 'Cell cracks'
 date: 2024-08-30
-permalink: /posts/2024/08/Corrosion/
+permalink: /posts/2024/08/cellcrack/
 tags:
   - Cell crack
   - PV failure

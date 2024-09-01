@@ -1,7 +1,7 @@
 ---
 title: 'Severe metallization corrosion'
 date: 2024-07-19
-permalink: /posts/2024/07/Corrosion/
+permalink: /posts/2024/07/corrosion/
 tags:
   - Corrosion
   - PV degradation
