@@ -102,7 +102,7 @@ Visual inspection, infrared imaging, and monitoring tools are methods for detect
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/glassbreakage_images/electroluminescence.PNG"
     width="70%">
-    <figcaption> Figure 7: EL image of hail affected modules (left: almost instinct, right: hardly damaged) </figcaption>
+    <figcaption> Figure 7: EL image of hail affected modules (left: almost intact, right: hardly damaged) </figcaption>
 &nbsp;
 </div>
 
