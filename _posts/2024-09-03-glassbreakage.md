@@ -11,11 +11,12 @@ Glass breakage is a common PV module failure that impacts plant safety and perfo
 
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/glassbreakage_images/intro.PNG"
-    width="50%">
+    width="35%">
     <figcaption> Figure 1: Glass breakage illustration </figcaption>
 &nbsp;
 </div>
 
+This blog post presents an overview on PV glass breakage: the root causes, signature, concomittant failures and detection methods.
 
 ## I. Apparition
 
@@ -24,22 +25,22 @@ Glass breakage is a recurrent failure with the highest share among the “sudden
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/glassbreakage_images/stats.PNG"
     width="100%">
-    <figcaption> Figure 2: Failure frequency for PV module defects with an impact on the system </figcaption>
+    <figcaption> Figure 2: Failure frequency for PV module defects with an impact on the system [2] </figcaption>
 &nbsp;
 </div>
 
 The front glass of PV modules is designed to protect the solar cells from the external environment while keeping a high optic transmission. However, this glass can break due to various causes:
 
-- **Manufacturing defect:** Another cause of glass breakage comes from the manufacturing phase where incorrect lamination can result in higher mechanical stress on the module materials which increases the likelihood of glass breakage [3].
+- **Manufacturing defect:** Glass breakage can come from the manufacturing phase where incorrect lamination can result in higher mechanical stress on the module materials which increases the likelihood of glass breakage [3].
 
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/glassbreakage_images/manufacturing.PNG"
-    width="50%">
+    width="40%">
     <figcaption> Figure 3: Glass breakage due to weak manufacturing process, reported by Herz et al. [2] from [SUPSI] </figcaption>
 &nbsp;
 </div>
 
-- **Installation and Design Flaws** Improper module clamping can also lead to glass breakage on, for instance, frameless PV modules [2], [3]. Excessive mechanical stress during the installation phase might lead to higher tension on the PV modules [3]. Additionally, transportation occasionally breaks PV module front glasses [3].
+- **Installation and Design Flaws**: Improper module clamping on frameless PV modules  can also lead to glass breakage [2], [3]. Excessive mechanical stress during the installation phase might lead to higher tension on the PV modules [3]. Additionally, transportation occasionally breaks PV module front glasses [3].
 
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/glassbreakage_images/clamp.PNG"
@@ -72,28 +73,31 @@ The front glass of PV modules is designed to protect the solar cells from the ex
 
 Due to its structure, thin film technologies are particularly subject to glass breakage [4], [9], [10]. 
 
-Jordan et al. [10] highlight a glass breakage occurrence in the order of 2% for moderate climate. The IEA report [3] shows a 10% share in all PV module failures. Following the reasoning from Sarquis Filho [11], glass breakage has a 10.8% occurrence from the solar bankability project [12], which corresponds to 7 x 10^-9 failure/unit/hour if we consider a generic 0.065 x 10^-6 failure/unit/hour
+Jordan et al. [10] highlight a glass breakage occurrence in the order of 2% for moderate climate. The IEA report [3] shows a 10% share in all PV module failures. Following the reasoning from Sarquis Filho [11], glass breakage has a 10.8% occurrence from the solar bankability project [12], which would correspond to 7 $10^{-9}$ failure/unit/hour if we consider a generic 0.065 $10^{-6}$ failure/unit/hour
 
 ## II. Signatures
 
 Glass breakage events lead to a loss of 1% to 2% for temperate climates in Herz et al. study [2].  
+
 Glass breakage typically leads to a partial loss of transmittance [11]. However, the most severe production losses come from the compromised integrity of the module due to moisture ingress and insulation defect.  
 
 In the short term, glass breakage is usually accompanied by cell cracks, reducing nominal power if significant parts are inactive. These can cause hotspots [3], [4], [13] and might eventually lead to fire [4]. Additionally, glass breakage might lead to ground faults [3], [4], [7], [11]. This effect can be intermittent with lower insulation or short circuits during rainy days [7], [11].  
 
-In the long term, broken glass no longer serves as an effective barrier against the environment and moisture, leading to accelerated degradation of the encapsulant and other components [13]. Specifically, moisture ingress accelerates the corrosion development in cell interconnections [3], [4], [7], [11]. For c-Si modules, performance and safety might remain at the same level immediately after glass breakage, as the cells, encapsulation, and wiring can still be intact [13].
+In the long term, broken glass no longer serves as an effective barrier against the environment and moisture, leading to accelerated degradation of the encapsulant and other components [13]. Specifically, moisture ingress accelerates the corrosion development in cell interconnections [3], [4], [7], [11]. 
+
+For c-Si modules, performance might remain at the same level immediately after glass breakage, as the cells, encapsulation, and wiring can still be intact [13].
 
 ## III. Concomitant Failures
 
 Glass breakage in PV modules can be triggered by localized heat dissipation, such as hotspots and burn marks caused by cell interconnection defects, which induce thermal stress [3], [4]. Additionally, failures in the junction box can result in resistive heating, which further contributes to glass breakage [3]. Mounting structures can also inflict damage on the glass [3].  
 
-Glass breakage often occurs alongside other failures within the PV module. For instance, breakage can be accompanied by cell cracks, which not only weaken the module's structure but also create new hotspots. These additional hotspots exacerbate the module's condition, leading to a cycle of increasing damage and efficiency loss [3], [4], [13].  
+Glass breakage often occurs alongside other failures within the PV module. For instance, breakage can be accompanied by cell cracks, which not only weaken the module's structure but also create new hotspots [3], [4], [13].  
 
 Glass breakage can lead to further complications, including insulation failure, which compromises the safety and operational integrity of the module [3]. The exposure of cells to environmental factors like moisture due to glass breakage accelerates degradation, leading to further hotspots, performance losses, and increased risk of electrical faults or fires.
 
 ## IV. Detection & Reparation
 
-Visual inspection, infrared imaging, and monitoring tools are methods for detecting glass breakage in PV modules. Visual inspection [2], [14] is the simplest and most efficient way to detect glass breakages. UV-fluorescence can also identify cell cracks. Infrared imaging [2], [14] detects temperature anomalies associated with glass breakage. Additionally, monitoring tools that track electrical performance can signal performance losses from glass breakage [14].
+Visual inspection, infrared imaging, and monitoring tools are methods for detecting glass breakage in PV modules. Visual inspection [2], [14] is the simplest and most efficient way to detect glass breakages. Infrared imaging [2], [14] detects temperature anomalies associated with glass breakage. Electroluminescence and UV-fluorescence can also identify cell cracks caused by glass breakage. Additionally, monitoring tools that track electrical performance can signal performance losses from glass breakage [14].
 
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/glassbreakage_images/electroluminescence.PNG"
@@ -102,7 +106,9 @@ Visual inspection, infrared imaging, and monitoring tools are methods for detect
 &nbsp;
 </div>
 
-Modules with broken glass need to be replaced [11]. For minor cracks, resealing may help temporarily [4]. Addressing glass breakage promptly through detection and repair is essential to maintain the efficiency and reliability of PV systems.
+Modules with broken glass need to be replaced [11]. For minor cracks, resealing may help temporarily [4]. 
+
+
 
 ## References
 
