@@ -7,7 +7,7 @@ tags:
   - PV failure
 ---
 
-Glass breakage is a common PV module failure that impacts plant safety and performance, potentially leading to insulation faults that can stop the entire plant operation.
+**Glass breakage** is a common PV module failure that impacts plant safety and performance, potentially leading to **insulation faults** that can stop the entire plant operation.
 
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/glassbreakage_images/intro.PNG"
