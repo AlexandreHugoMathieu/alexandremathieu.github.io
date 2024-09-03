@@ -12,7 +12,7 @@ tags:
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/glassbreakage_images/intro.PNG"
     width="35%">
-    <figcaption> Figure 1: Glass breakage illustration </figcaption>
+    <figcaption> Figure 1: Glass breakage illustration [1] </figcaption>
 &nbsp;
 </div>
 
