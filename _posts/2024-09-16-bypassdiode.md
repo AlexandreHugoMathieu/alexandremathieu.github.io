@@ -104,7 +104,7 @@ Infrared thermography might reveal some bypass diode activations or hotspots [3]
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/thermo.PNG"
     width="60%">
-    <figcaption> Figure 5: Possible thermography signature of failed bypass diodes [11] </figcaption>
+    <figcaption> Figure 5: Possible thermography signatures of failed bypass diodes [11] </figcaption>
 &nbsp;
 </div>
 
