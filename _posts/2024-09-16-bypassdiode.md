@@ -72,7 +72,7 @@ Several failures usually occur at the same time as bypass diode failures.
 
 <ins>Causes </ins>
 
-Partial shading has the potential to lead to hot-spots which can result in burn marks, bypass diode failures, glass breakage, arcing or fire [3]. Other mismatches due to encapsulant discoloration, backsheet/frontsheet delamination, corrosion… might lead to the activation of bypass diode [3] which might then age prematurely. 
+Partial shading has the potential to lead to hot-spots which can result in burn marks, bypass diode failures [3]. Other mismatches due to encapsulant discoloration, backsheet/frontsheet delamination, corrosion… might lead to the activation of bypass diode [3] which might then age prematurely.  Also, the corrosion in junction box might weaken the bypass diode.
 
 <ins>Concomittant </ins>
 
