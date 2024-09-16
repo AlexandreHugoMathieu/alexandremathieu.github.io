@@ -7,19 +7,19 @@ tags:
   - PV failure
 ---
   
-Bypass diodes have a pivotal role in PV modules and their failures might lead to significant power losses and even safety issues like fire or electric arcs.
+**Bypass diodes** have a pivotal role in PV modules and their failures might lead to significant performance losses and even safety issues like fire or electric arcs.
 
 This blog post gives an overview of bypass diodes and their failures with their root causes, signatures, and mitigation technics.
 
-I.	Overview
+# I.	Overview
 
-Bypass diodes in PV modules are used to handle important mismatch cases such as shading, cell crack, uneven soiling, etc... to prevent severe losses at the module level and high reverse voltages inducing hotspots on the PV cells. Those are typically Schottky diodes which are commonly 3 (between 2 and 5 [1]) per PV module, each in parallel of a group of around 20 cells.
+Bypass diodes in PV modules are used to handle important mismatch cases such as shading, cell crack, uneven soiling, etc... to prevent severe losses at the module level and high reverse voltages inducing hotspots at the cell level. Those are typically Schottky diodes which are commonly 3 (between 2 and 5 [1]) per PV module, each in parallel of a group of around 20 cells.
 
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/intro.PNG"
-    width="50%">
+    width="85%">
     <figcaption> Figure 1: PV module with one-shaded cell [2] </figcaption>
-&nbsp
+&nbsp;
 </div>
 
 However,  those diodes are subject to failure due to static high voltage discharges, mechanical and thermal stresses [3].
@@ -27,34 +27,35 @@ However,  those diodes are subject to failure due to static high voltage dischar
 # II.	Root causes
 
 The reasons for diode failures can appear at different stages:
-- Manufacturing: wrong specification [4], non-functional diode, diode inversed at the assembling phase, wrongly-connected... [1].
+- **Manufacturing**: wrong specification [4], non-functional diode, diode inversed at the assembling phase, wrongly-connected... [1].
 Mechanical shock or electrostatic discharge during the PV module assembling phase might also trigger diode failures [1].
-- Installation: Wrong installation (inversed or not properly connected [3]), mechanical stress on junction boxes, shocks… [1]
-- Operation: Diode aging mechanisms, junction box corrosion events… [1] , electrostatic discharge and thermal runaways [5].
+- **Installation**: Wrong installation (inversed or not properly connected [3]), mechanical stress on junction boxes, shocks… [1]
+- **Operation**: Diode aging mechanisms, junction box corrosion, events with mechanical stresses [1] , electrostatic discharge and thermal runaways [5].
 
-Electrostatic discharge occurs when a large current passes through the diode over a short period of time, which can occur, for instance, occur due to a lightning strike [5]. Thermal runaway occurs when the heat dissipation transition to another configuration model is too high to for the diode itself and ultimately leads to destroy the diode. [5], [6]
+Electrostatic discharge occurs when a large current passes through the diode over a short period of time, which can occur, for instance, due to a lightning strike [5]. Thermal runaway occurs when the heat dissipation from a transition to another operation mode is too high to for the diode itself. [5], [6]
 
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/runaway.PNG"
     width="50%">
     <figcaption> Figure 2: Diode failed by thermal runaway [2] </figcaption>
-&nbsp
+&nbsp;
 </div>
 
 
 Note that when diodes are operating a higher number hours than expected, their lifetime decreases [1], [3] due, notably, to aging mechanisms and higher operating temperatures. For instance, in case of recurrent partial shading, bypass diodes might be operating more often, increasing the likelihood of diode failures [1], [3]. 
-Bypass diode failures are functions of its operating temperature in several models such as the Semikron model  [7] or the formula from the military MIL-HDBK-217  handbook [8]. The Semikron model notably captures thermal cycling to estimate the semiconductor lifetime while the MIL-HDB-217 enables to calculate the failure rate based on the operating temperature.  For (low frequency) diode components, MIL-HDBK-217 [8] especially formulates the failure rate - $\lambda $ in failure per million hours according to the following equation:
+
+Bypass diode failures are functions of their operating temperature as introduced in several models such as the Semikron model  [7] or the formula from the military MIL-HDBK-217  handbook [8]. The Semikron model notably captures thermal cycling to estimate the semiconductor lifetime while the MIL-HDB-217 enables to calculate the failure rate based on the operating temperature.  For (low frequency) diode components, MIL-HDBK-217 [8] especially formulates the failure rate $\lambda $ in failure per million hours according to the following equation:
 
 $$ \lambda = \lambda_b \cdot \Pi_T  \cdot \Pi_S  \cdot \Pi_Q   \cdot \Pi_E $$
 
 Where:
-- $ \lambda_b $, The base failure rate: 0.0030 for Schottky diode
-- $ \Pi_T $, The temperature factor, for general purpose, with $T_j$ the component temperature, it can be expressed as $$ \Pi_T  = exp(-3091 \cdot (\frac{1}{T_j +273} - \frac{1}{298}) $$
-- $ \Pi_S $ ,The electrical stress factor
-- $ \ Pi_Q  $, The quality factor: 5.5 for lower quality for instance
-- $ \Pi_E $, The environmental factor: 2.4 for GF, ground-fixed defined as “Moderately controlled environments such as installation in permanent racks with adequate cooling air and possible installation unheated buildings; includes permanent installation of air traffic control radar and communications facilities”
+- $ \lambda_b $, the base failure rate: 0.0030 for Schottky diode.
+- $ \Pi_T $, the temperature factor. For general purpose, with $T_j$ the component temperature, it can be expressed as $$ \Pi_T  = exp(-3091 \cdot (\frac{1}{T_j +273} - \frac{1}{298})) $$.
+- $ \Pi_S $ ,the electrical stress factor.
+- $ \ Pi_Q  $, the quality factor, equal to 5.5 for lower quality for instance.
+- $ \Pi_E $, the environmental factor.
 
-Then, those are predominant in hot climates [9]. Bypass diode failures are primarily revealed during the first ten years of the PV installation [1], [3].  Golnas highlights that bypass diodes are responsible for 3% of the PV module tickets over 350 PV systems operated by SunEdison [10].
+Then, those failures are more prone in hot climates [9]. Also, bypass diode failures are primarily revealed during the first ten years of the PV installation [1], [3].  Golnas highlights that bypass diodes are responsible for 3% of the PV module tickets over 350 PV systems operated by SunEdison [10].
 
 # III.	Signatures & simultaneous failures
 
@@ -63,8 +64,8 @@ Failed diodes are either blocked in short-circuit or open-circuit [1], [3]. Shor
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/IV.PNG"
     width="65%">
-    <figcaption> igure 3: Measured I-V characteristic curve of a module with two failed open-circuited bypass diodes out of three [11]</figcaption>
-&nbsp
+    <figcaption> Figure 3: Measured I-V characteristic curve of a module with two failed open-circuited bypass diodes out of three [11]</figcaption>
+&nbsp;
 </div>
 
 Several failures usually occur at the same time as bypass diode failures.
@@ -75,7 +76,7 @@ Partial shading has the potential to lead to hot-spots which can result in burn 
 
 <ins>Concomittant </ins>
 
-Cell hot spots might appear before or while the diode activate.  
+Cell hot spots might appear before, while the diode activate or after the diode failed.  
 
 <ins> Consequences</ins>
 
@@ -85,7 +86,7 @@ In case of failed open-circuited diode and mismatch, the current goes through th
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/burnmarks.PNG"
     width="65%">
     <figcaption> Figure 4: Front and back side view of burn marks caused by open-circuited bypass diodes and current mismatches conditions [11] </figcaption>
-&nbsp
+&nbsp;
 </div>
 
 
@@ -102,16 +103,16 @@ Infrared thermography might reveal some bypass diode activations or hotspots [3]
  
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/thermo.PNG"
-    width="50%">
+    width="60%">
     <figcaption> Figure 5: Possible thermography signature of failed bypass diodes [11] </figcaption>
-&nbsp
+&nbsp;
 </div>
 
 
 
 Open-circuit diode is more difficult to detect since no effect is perceivable if the module is not in a significant mismatch configuration [3], [11].
 
-**Recommendations:**
+<ins>Recommendations </ins>
 - In case of identified hotspots or burn marks, bypass diodes must be checked to make sure they activate to prevent more severe degradations [1], [9].
 - Avoiding partial shading will extend the bypass lifetimes. [1]
 
