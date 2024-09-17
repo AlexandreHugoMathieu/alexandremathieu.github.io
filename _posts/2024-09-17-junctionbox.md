@@ -9,7 +9,7 @@ tags:
   - PV failure
 ---
   
-**Junction boxes** enable is the connection gate between modules, and their failures can result in **substantial performance degradation**, **safety hazards** like internal arcing, and even potential **fires**.
+**Junction boxes** is the connection gate between modules, and their failures can result in **substantial performance degradation**, **safety hazards** like internal arcing, and even potential **fires**.
 
 This blog post provides an overview of junction box failures in PV modules, exploring their root causes, identifying key failure signatures, and outlining effective mitigation strategies.
 
@@ -18,8 +18,8 @@ This blog post provides an overview of junction box failures in PV modules, expl
 The junction box is generally fixed on the back of the PV module and acts as a protection barrier to the internal connections between the terminals and the cell string interconnectors. The junction box also contains the bypass diode which gets activated to protect the PV cells in case of hotspots or shadow. [1]
 
 <div align="center">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/structure.PNG"
-    width="85%">
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/jbox_images/structure.PNG"
+    width="60%">
     <figcaption> Figure 1: PV module structure [2] </figcaption>
 &nbsp;
 </div>
@@ -27,8 +27,8 @@ The junction box is generally fixed on the back of the PV module and acts as a p
 A multitude of defects can occur within the junction box [1], [3], [4]. The box lid can appear weathered, brittle, cracked, warped, melted or burned [4]. The box can also be detached as open or loose. The sealing components might be compromised (squeezed, broken, brittle) or even completely missing [4]. 
 
 <div align="center">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/burn.PNG"
-    width="85%">
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/jbox_images/burn.PNG"
+    width="95%">
     <figcaption> Figure 2: Burnt junction box caused by an arc at input lead [5] </figcaption>
 &nbsp;
 </div>
@@ -45,8 +45,8 @@ More specifically, inadequate IP rating junction box may cause water intrusion a
 Improper mounting of PV modules can be also the cause of damaged the j-box with the wrong adjustment of cabling sizes to interconnect modules to a string, causing frequent or permanent mechanical stress on the j-boxes [4].
 
 <div align="center">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/wiring.PNG"
-    width="85%">
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/jbox_images/wiring.PNG"
+    width="40%">
     <figcaption> Figure 3: Junction box with poor wiring [1] </figcaption>
 &nbsp;
 </div>
@@ -63,8 +63,8 @@ The junction box is frequently mentioned in field reliability reports, though it
 According to Collins et al. [9], the failure distribution for the RowBox (considered as a junction box) indicates a slightly higher likelihood of failure in the initial years for a 4.6 MW PV silicon system in Arizona, but this probability stays relatively constant throughout the remaining lifespan of the PV module. Chang et al. [6] further accentuate this “infant” failure characteristic stating that 85% of the failures are included within the first three months after commissioning as seen in the Figure below.
 
 <div align="center">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/apparition_rate.PNG"
-    width="85%">
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/jbox_images/apparition_rate.PNG"
+    width="65%">
     <figcaption> Figure 4: Junction box failure time after installation [6] </figcaption>
 &nbsp;
 </div>
@@ -78,8 +78,8 @@ Bad contacts or corrosion can increase the internal resistance and, consequently
 In the worst case junction box failures cause interconnection failure (module or cell strings short-circuited or open-circuited) or internal arcing within the j-box [4]. Insulation faults are also part of the listed consequences from junction box failures [10].
 
 <div align="center">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/arcing.PNG"
-    width="85%">
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/jbox_images/arcing.PNG"
+    width="45%">
     <figcaption> Figure 5: Junction box failure example with arcing [6] </figcaption>
 &nbsp;
 </div>
@@ -91,7 +91,7 @@ Several anomalies usually occur at the same time as junction box failure.
 -	Mounting structure failures might lead to junction box failures in some cases [4]. 
 
 <div align="center">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/diode.PNG"
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/jbox_images/diode.PNG"
     width="85%">
     <figcaption> Figure 6: The faulty example for burnt bypass diode junction box [6] </figcaption>
 &nbsp;
@@ -110,8 +110,8 @@ Then, visual inspection is the common way to identify junction box failures [4],
 Higher resistive effects in the junction box or mismatches can be detected with an infrared camera [4], [11].
 
 <div align="center">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/infrared.PNG"
-    width="85%">
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/jbox_images/infrared.PNG"
+    width="65%">
     <figcaption> Figure 7: Infrared imaging of a hotspot Jbox due to loose electric connection inside [12] </figcaption>
 &nbsp;
 </div>

@@ -1,5 +1,5 @@
 ---
-title: 'Bypass diode'
+title: 'Bypass diode failure'
 date: 2024-09-16
 permalink: /posts/2024/09/bypassdiode/
 tags:
