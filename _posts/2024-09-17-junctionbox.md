@@ -19,7 +19,7 @@ The junction box is generally fixed on the back of the PV module and acts as a p
 
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/jbox_images/structure.PNG"
-    width="60%">
+    width="40%">
     <figcaption> Figure 1: PV module structure [2] </figcaption>
 &nbsp;
 </div>
