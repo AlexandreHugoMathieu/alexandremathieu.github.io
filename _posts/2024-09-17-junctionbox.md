@@ -9,7 +9,7 @@ tags:
   - PV failure
 ---
   
-**Junction boxes** is the connection gate between modules, and their failures can result in **substantial performance degradation**, **safety hazards** like internal arcing, and even potential **fires**.
+**Junction boxes** are the connection gates between modules, and their failures can result in **substantial performance degradation**, **safety hazards** like internal arcing, and even potential **fires**.
 
 This blog post provides an overview of junction box failures in PV modules, exploring their root causes, identifying key failure signatures, and outlining effective mitigation strategies.
 
