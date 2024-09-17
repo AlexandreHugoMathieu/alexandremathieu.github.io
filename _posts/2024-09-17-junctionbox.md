@@ -15,7 +15,7 @@ This blog post provides an overview of junction box failures in PV modules, expl
 
 # I.	Overview & root causes
 
-The junction box is generally fixed on the back of the PV module and acts as a protection barrier to the internal connections between the terminals and the cell string interconnectors. The junction box also contains the bypass diode which gets activated to protect the PV cells in case of hotspots or shadow. [1]
+The junction box is generally fixed on the back of the PV module and acts as a protection barrier to the internal connections between the terminals and the cell string interconnectors. The junction box also contains the bypass diode which gets activated to protect the PV cells in case of significant mismatches caused from module heterogeneity irradiance conditions or shadow. [1]
 
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/jbox_images/structure.PNG"
@@ -42,7 +42,7 @@ Junction box detachment results from poor fixing of the junction box to the back
 
 More specifically, inadequate IP rating junction box may cause water intrusion and subsequent failure [4].
 
-Improper mounting of PV modules can be also the cause of damaged the j-box with the wrong adjustment of cabling sizes to interconnect modules to a string, causing frequent or permanent mechanical stress on the j-boxes [4].
+Improper mounting of PV modules can be also the cause of damaged the j-box with the wrong adjustment of cabling sizes to interconnect modules to a string, causing mechanical stress on the j-boxes [4].
 
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/jbox_images/wiring.PNG"
@@ -101,17 +101,11 @@ According to Bansal et al. [10], hot climate might accelerate junction box failu
 
 # IV.	Mitigation
 
-Several inspection method enable to detect junction box failures.
-
-Monitoring tools might detect a loss in performance in case of short-circuit or open-circuit configurations from the junction box failures [11].
-
-Then, visual inspection is the common way to identify junction box failures [4], [11]. 
-
-Higher resistive effects in the junction box or mismatches can be detected with an infrared camera [4], [11].
+Several inspection method enable to detect junction box failures.  Monitoring tools might detect a loss in performance in case of short-circuit or open-circuit configurations from the junction box failures [11].  Then, visual inspection is the common way to identify junction box failures [4], [11].Higher resistive effects in the junction box or mismatches can be detected with an infrared camera [4], [11].
 
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/jbox_images/infrared.PNG"
-    width="65%">
+    width="45%">
     <figcaption> Figure 7: Infrared imaging of a hotspot Jbox due to loose electric connection inside [12] </figcaption>
 &nbsp;
 </div>
@@ -119,14 +113,14 @@ Higher resistive effects in the junction box or mismatches can be detected with 
 
 In the case of interconnection failures, short-circuits can be detected with the open-circuit measurement (or IV curve) [4].
 
-If a junction box fail, it is advised to replace the module, since repairing junction boxes might lead to fires [11].
+If a junction box fail, it is advised to replace the module, since repairing junction boxes might easily lead to new fires [11].
 
 Chang et al. [6] provide several recommendations at different levels:
-- System installation: installing suitable protection devices (lighting protector, string diode etc…) would help to prevent energy over stress which is one main identified root cause. Employing qualified constructors, making sure of the string polarity and avoiding un-authorized rework for cable and connectors would facilitate better reliability [6]. 
-- Module manufacturing: improving the quality of the fabrication process with trained operators is recommended as well as putting a focus on junction reliability in their process [6].  Proper lamination would also reduce water ingress likelihood and the progress of corrosion [10].
-- Junction box supplier: automatic inspection systems and refining design rules to improve reliability is advised to junction box suppliers [6]. Proper junction box sealing would also limit failures [10].
+- **System installation**: installing suitable protection devices (lighting protector, string diode etc…) would help to prevent energy over stress which is one main identified root cause. Employing qualified constructors, making sure of the string polarity and avoiding un-authorized rework for cable and connectors would facilitate better reliability [6]. 
+- **Module manufacturing**: improving the quality of the fabrication process with trained operators is recommended as well as putting a focus on junction reliability in their process [6].  Proper lamination would also reduce water ingress likelihood and the progress of corrosion [10].
+- **Junction box supplier**: automatic inspection systems and refining design rules to improve reliability is advised to junction box suppliers [6]. Proper junction box sealing would also limit failures [10].
 
-The IEC 62790 standard particularly sets design and testing requirements for junction boxes used in photovoltaic (PV) modules, focusing on safety and durability. Key design criteria include a minimum IP55 protection rating, operational temperatures from -40°C to +85°C, and safety classifications. The standard outlines tests for material durability (such as corrosion, aging…) and electrical safety (including insulation, terminal connections, and mechanical safety). Among the identified gaps for the IEC 62790 standard mentioned in the literature [11], it doesn't provide guidance for certification when components are changed, leaving it to manufacturers or laboratories. Also, most module datasheets mention protection ratings and safety class but often omit compliance with the standard.
+The IEC 62790 standard particularly sets design and testing requirements for junction boxes used in photovoltaic (PV) modules, focusing on safety and durability. Key design criteria include a minimum IP55 protection rating, operational temperatures from -40°C to +85°C, and safety classifications. The standard outlines tests for material durability (such as corrosion, aging…) and electrical safety (including insulation, terminal connections, and mechanical safety). Among the identified gaps for the IEC 62790 standard mentioned in the literature [11], it does not provide guidance for certification when components are changed, leaving it to manufacturers or laboratories. Also, most module datasheets mention protection ratings and safety class but often omit compliance with the standard.
 
 Ultimately, understanding the root causes and implementing preventive measures is vital to reducing the risk of junction box failures and ensuring long-term PV system reliability.
 
