@@ -8,10 +8,10 @@ tags:
   - PV failure
 ---
   
-**Interconnection failures** in photovoltaic (PV) modules can lead to significant module **power losses**, and **long-term damage** with safety risks.
+**Interconnection failures** in photovoltaic (PV) modules can lead to severe **power losses**, and **long-term damage** with safety risks.
 
 <div align="center">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/intro.PNG"
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/interconnection_images/intro.PNG"
     width="85%">
     <figcaption> Figure 1: Disconnected cell interconnect with delamination [1] </figcaption>
 &nbsp;
@@ -25,7 +25,7 @@ This post provides an overview of interconnection failures in PV modules, explor
 In a crystalline silicon PV module, wafer-cells are typically interconnected in series with busbars (or cell interconnect ribbons). These busbars are connected from the front side to the rear side of the solar cells. A series of interconnected cells with a bypass diode in parallel is called a cell string [2]. These cell strings are typically interconnected in series or sometimes in parallel by string interconnect ribbons [2]. The cell interconnections are considered to be both the busbars and string interconnect ribbons.
 
 <div align="center">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/metal_grid.PNG"
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/interconnection_images/metal_grid.PNG"
     width="85%">
     <figcaption> Figure 2: Typical PV module with three bypass diodes and its cell interconnections </figcaption>
 &nbsp;
@@ -56,7 +56,7 @@ In stage 1, the resistance in series seems to be mostly responsible for the powe
 PV cell interconnection failure occur over the whole PV installation lifetime. The figure below represents the distribution of the cell interconnection stages over time from a 1080-module system installed in 2004. Note that the first final stages occur 6 years later.
 
 <div align="center">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/apparition_rate.PNG"
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/interconnection_images/apparition_rate.PNG"
     width="85%">
     <figcaption> Figure 3: Annual trend in number of modules with cell interconnect ribbon failures [2] </figcaption>
 &nbsp;
@@ -79,7 +79,7 @@ The corrosion of the cell metallization leads to interconnection fatigue and, po
 If all interconnections block the current flow in a cell string, the bypass diode will be collected, and will prematurely age. The failed bypass diode will result in open-circuit or short-circuit state. In case of open-circuited diode, the current will go through the failed cell string and dangerously generate heat which can lead to high temperatures, electric arcs and even fires [3]. Then, in progressed stages, the interconnection failures might cause glass breakage and burn marks [2], [3], [5], [9] as shown in the Figure below.
 
 <div align="center">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/final.PNG"
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/interconnection_images/final.PNG"
     width="85%">
     <figcaption> Figure 4: Glass breakage (left) and burn marks (right) caused from broken cell interconnections [2] </figcaption>
 &nbsp;
@@ -98,7 +98,7 @@ Cell interconnection failures are not easy to see with the naked eye [3]. Howeve
 Infrared images would highlight hotspots caused by interconnect failures [3]. More specifically, poor soldering lead to higher power dissipation and localized heating [3].
 
 <div align="center">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/IR.PNG"
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/interconnection_images/IR.PNG"
     width="85%">
     <figcaption> Figure 5: Infrared (left) and electroluminescence (right) images of PV module with disconnected cell interconnections [2] </figcaption>
 &nbsp;
@@ -114,7 +114,7 @@ Some other technics are listed to detect interconnection failures [2]:
 IV curves also enable to detect the performance loss from cell interconnection failures. In the Figure below, the interconnections are redundant, and the interconnection failure causes an increase of the resistance in series with a more “round” knee aspect. It is also combined with some aging effect which decreases the expected photocurrent.
 
 <div align="center">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/IV.PNG"
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/interconnection_images/IV.PNG"
     width="85%">
     <figcaption> Figure 6: Infrared image and IV curve of a module with an interconnection failure [2] </figcaption>
 &nbsp;
@@ -123,7 +123,7 @@ IV curves also enable to detect the performance loss from cell interconnection f
 At more advanced stages, the I-V curve can also detect these issues. When multiple interconnection failures block the flow of current, the bypass diode activates, as illustrated in the figure below.
 
 <div align="center">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/bypassdiode_images/diode_activation.PNG"
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/interconnection_images/diode_activation.PNG"
     width="85%">
     <figcaption> Figure 7: Infrared image and IV curve of a module with two interconnection failures blocking the current flow [1] </figcaption>
 &nbsp;
