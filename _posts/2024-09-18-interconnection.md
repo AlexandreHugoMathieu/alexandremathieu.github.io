@@ -50,7 +50,7 @@ Overall, Kontges et al. [2] set up three stages to describe the interconnection 
 Safety risks are also quite limited while the hot spot temperature does not reach more than 100°C [3]. 
 3. **Final stage:** Safety is at stake where, for instance, the bypass has blown up which results in more damage to the module such as burn marks, glass breakage etc...[2]
 
-4. In stage 1, the resistance in series seems to be mostly responsible for the power decrease which results in a decrease of fill factor [2], [6]. Colvin et al. particularly highlights that this loss is more severe during more sunny conditions [6]. When having 4 busbars, the power loss per interconnection cut is in the order of 0.1% due to an increase of the resistance in series around 1% [6]. With 3 busbars, the redundancy is decreased and the power loss important around 1%/cut [7]. Both studies [6][7] showed that cutting the outer connections lead to more losses than when cutting the inner connections.
+In stage 1, the resistance in series seems to be mostly responsible for the power decrease which results in a decrease of fill factor [2], [6]. Colvin et al. particularly highlights that this loss is more severe during more sunny conditions [6]. When having 4 busbars, the power loss per interconnection cut is in the order of 0.1% due to an increase of the resistance in series around 1% [6]. With 3 busbars, the redundancy is decreased and the power loss important around 1%/cut [7]. Both studies [6][7] showed that cutting the outer connections lead to more losses than when cutting the inner connections.
 
 # III.	Apparition
 
