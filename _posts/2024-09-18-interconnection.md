@@ -1,7 +1,7 @@
 ---
 title: 'Cell interconnection failure'
 date: 2024-09-18
-permalink: /posts/2024/09/jbox/
+permalink: /posts/2024/09/cellinterconnection/
 tags:
   - PV cell
   - cell interconnection
