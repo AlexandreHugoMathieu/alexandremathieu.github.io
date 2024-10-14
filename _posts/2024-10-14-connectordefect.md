@@ -18,7 +18,7 @@ The most common connectors are MC4 which can be connected by hand but needs to b
 
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/connectordefect_images/burned_connector.PNG"
-    width="50%">
+    width="35%">
     <figcaption> Figure 1: Burned connector [1] </figcaption>
 &nbsp;
 </div>
