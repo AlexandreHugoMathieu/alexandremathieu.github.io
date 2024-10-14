@@ -11,14 +11,14 @@ tags:
 
 This blog post investigates the causes, the apparition time and signature of the connector failures.
 
-## Causes
+## I. Causes
 
 The most common connectors are MC4 which can be connected by hand but needs to be disconnected with a tool for safety purposes. 
  
 
 <div align="center">
     <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/connectordefect_images/burned_connector.PNG"
-    width="75%">
+    width="50%">
     <figcaption> Figure 1: Burned connector [1] </figcaption>
 &nbsp;
 </div>
@@ -26,7 +26,7 @@ The most common connectors are MC4 which can be connected by hand but needs to b
 
 A weak connection can lead to ground-fault, arcing and fires [2] and a significant share of PV fire sources come from quick connector defects [1]. Connector failures come typically from forcing different types of connectors to connect or not-well crimped connectors [1]. Even if aging mechanisms with corrosion due to long exposure to weather with UV and humidity are identified for connectors, failures are most likely to be related to installation issues [3]. Improper installations, mismatch connectors, low-quality and faulty materials are the common root causes of connector failures [4]. 
 
-## Time apparition
+## II. Time apparition
 
 Connector failures mostly occur during the first years after commissioning [2], [5] However, two reports [2], [6] show that most of the failures do not happen directly on the first year after the installation but rather several years after as shown with the generic "cable and interconnect" failure category in the figure below.
 
@@ -37,9 +37,9 @@ Connector failures mostly occur during the first years after commissioning [2], 
 &nbsp;
 </div>
 
-From a modeling perspective, Jordan et al. [7] shows that there is connector failure for 0.002 - 0.035 % out of the 100 000 studied systems in USA per year. Also, Baschel et al. [8] outline from O&M reports, where no information is disclosed on the PV installations due to confidentiality agreement, a failure rate of $5.6 \cdot 10^{-9} failures/hour$.  Another report [9] highlights a share of 6% for connectors among all PV module failures from more than 600 PV systems over several continents. 
+From a statistic perspective, Jordan et al. [7] shows that there is connector failure for 0.002 - 0.035 % out of the 100 000 studied systems in USA per year. Also, Baschel et al. [8] outline from O&M reports, where no information is disclosed on the PV installations due to confidentiality agreement, a failure rate of $5.6 \cdot 10^{-9} failures/hour$.  Another report [9] highlights a share of 6% for connectors among all PV module failures from more than 600 PV systems over several continents. 
 
-## Signature
+## III. Signature
 
 The contact resistance observes three stages according to  the IEC 61238-1-1 standard [10]  as shown in the figure below. The initial stages see resistance change as stable areas form after connector installation, followed by a stable phase. Those two stages are included in the expected PV system degradation over time.
 In the final accelerated aging stage, resistance very quickly increases as the connector nears its end of life. This evolution over time can also be described as exponential [11]. 
