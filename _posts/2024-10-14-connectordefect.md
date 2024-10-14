@@ -17,7 +17,7 @@ The most common connectors are MC4 which can be connected by hand but needs to b
  
 
 <div align="center">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/connectordefect_images/intro.PNG"
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/connectordefect_images/burned_connector.PNG"
     width="75%">
     <figcaption> Figure 1: Burned connector [1] </figcaption>
 &nbsp;
@@ -31,7 +31,7 @@ A weak connection can lead to ground-fault, arcing and fires [2] and a significa
 Connector failures mostly occur during the first years after commissioning [2], [5] However, two reports [2], [6] show that most of the failures do not happen directly on the first year after the installation but rather several years after as shown with the generic "cable and interconnect" failure category in the figure below.
 
 <div align="center">
-    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/connectordefect_images/failure_distribution.PNG"
+    <img src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//images/connectordefect_images/failure_distribution.png"
     width="80%">
     <figcaption> Figure 2: Failure counts over time over a worldwide PV installation dataset [6] </figcaption>
 &nbsp;
