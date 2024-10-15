@@ -54,6 +54,8 @@ In the final accelerated aging stage, resistance very quickly increases as the c
 
 Failed connectors usually go through two phases. The first phase can be modeled with an increase a resistance in serie with a thermal dissipation that can be identified with thermographies [3], [4]. However, this resistance increase might be too small to detect, electrically-wise and visually-wise. Sometimes there is a transitional period towards the second phase which consists in low insulation faults which might be intermittent due to varying environment conditions with, for instance, different levels of humidity modifying the conductivity. The second phase corresponds to a complete compromised connector. It is usually characterized either by a ground fault or a burst connector which opens the string circuit.
 
+Infrared images detect early symptoms while visual inspection enables to quickly scan connector defects.
+
 Connector failures in PV systems, often due to poor installation or mismatched components, can lead to serious electrical hazards, emphasizing the need for proper installation and regular maintenance to prevent long-term damage and risks.
 
 **References**
