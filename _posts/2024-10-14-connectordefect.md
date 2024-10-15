@@ -4,7 +4,8 @@ date: 2024-10-14
 permalink: /posts/2024/10/connectordefect/
 tags:
   - Connector
-  - PV failure
+  - PV failure 
+  - Insulation fault
 ---
 
 **Connectors** are widely used throughout PV systems and electrically connect PV modules to each other, to combiner boxes, fuse boxes or inverters [1].  Nevertheless, connector failures can lead to dramatic consequences such as open-circuits, insulation faults, electrical risks and, even fire.
