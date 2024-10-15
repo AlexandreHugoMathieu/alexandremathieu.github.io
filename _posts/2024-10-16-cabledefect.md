@@ -8,7 +8,7 @@ tags:
   - Insulation fault
 ---
 
-Cables are omnipresent over the PV array and enables the electrical connection between the PV array elements.  Those defects are among the most severe due to their frequency and impact on their performance [1].
+**Cables** are omnipresent over the PV array and enable the electrical connection between the PV array elements. Cable failures are among the **most severe** due to their frequency and impact on their performance [1].
 
 This blog post deals with the causes, the apparition time and signature of cable failures.
 
@@ -24,8 +24,6 @@ Defects in DC cables can occur due to incorrect sizing during the design phase o
     <figcaption> Figure 1: Corroded cable (left) and animal bites on cable (right) [4] </figcaption>
 &nbsp;
 </div>
-
-
 
 # II. Apparition phase
 
