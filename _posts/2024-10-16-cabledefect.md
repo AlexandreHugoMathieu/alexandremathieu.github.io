@@ -1,6 +1,6 @@
 ---
 title: 'Cable defect'
-date: 2024-10-15
+date: 2024-10-16
 permalink: /posts/2024/10/cabledefect/
 tags:
   - Cable
