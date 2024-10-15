@@ -1,10 +1,10 @@
 ---
 title: 'Cable defect'
-date: 2024-10-16
+date: 2024-10-15
 permalink: /posts/2024/10/cabledefect/
 tags:
   - Cable
-  - PV failure
+  - PV failure 
   - Insulation fault
 ---
 
