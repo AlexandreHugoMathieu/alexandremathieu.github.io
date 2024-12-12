@@ -44,4 +44,4 @@ The PhD is in collaboration within 3 entities:
 
 As part of the 2024 CSTB PhD Students' Day, a 3-minute video was created to present my thesis in a simplified and accessible way in French.
 
-<video src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//files/MATHIEU_Alexandre_RIFAC_Pitch-2024.mp4"></video>
+<iframe src="https://drive.google.com/file/d/1W8tb-eSGAttjCvaXdFEVJ36M3iv4gXSH/preview" width="640" height="480" allow="autoplay"></iframe>
