@@ -38,3 +38,10 @@ The PhD is in collaboration within 3 entities:
   * Martin THEBAULT (LOCIE)
   * Simon THEBAULT (CSTB)
   * Simon BODDAERT (CSTB)
+
+
+## Video CSTB (in French)
+
+As part of the 2024 CSTB PhD Students' Day, a 3-minute video was created to present my thesis in a simplified and accessible way in French.
+
+<video src="https://alexandrehugomathieu.github.io/alexandremathieu.github.io//files/MATHIEU_Alexandre_RIFAC_Pitch-2024.mp4"></video>
