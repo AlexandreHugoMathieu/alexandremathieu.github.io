@@ -88,8 +88,8 @@ author:
   location         : "Grenoble/FRANCE"
   employer         :
   pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  googlescholar    : #"http://yourfullgooglescholarurl.com"
-  email            : alexandre.mathieu@cstb.fr
+  googlescholar    : "https://scholar.google.com/citations?user=EaKfD28AAAAJ"
+  email            : almat@dtu.dk
   researchgate     :  "https://www.researchgate.net/profile/Alexandre-Mathieu-9"
   uri              :
   bitbucket        :
