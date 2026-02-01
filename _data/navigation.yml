@@ -1,7 +1,7 @@
 # main links links
 main:
   - title: "Postdoc"
-      url: /postdoc/
+    url: /postdoc/
 
   - title: "PhD Thesis"
     url: /phd/
