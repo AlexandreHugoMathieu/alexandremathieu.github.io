@@ -21,6 +21,10 @@ main:
         
   - title: "Blog Posts"
     url: /year-archive/
+    
+  - title: "CorRES Solar Validation"
+    url: /metrics/
+
 
 #  - title: "CorRES Solar Validation"
 #    url: /metrics/
