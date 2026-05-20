@@ -21,7 +21,10 @@ main:
         
   - title: "Blog Posts"
     url: /year-archive/
-    
+
+  - title: "Solar Metrics"
+    url: /metrics/
+
 #  - title: "Guide"
 #    url: /markdown/
 
