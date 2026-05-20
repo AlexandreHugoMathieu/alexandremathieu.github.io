@@ -599,14 +599,18 @@ function renderBarChart() {
     marker:{color:colors[season]},
   }));
 
+  
   const layout = lightLayout({
     barmode:'group',
     xaxis:{title:'Station', tickangle:-30},
     yaxis:{title:`${currentMetric.toUpperCase()} [${VAR_UNITS[currentVar]}]`},
-    height:360, legend:{orientation:'h',y:1.1},
-    // Zero line for bias
-    shapes: currentMetric==='bias' ? [{type:'line',x0:-0.5,x1:stationNames.length-0.5,y0:0,y1:0,line:{color:'#333',dash:'dot',width:1}}] : [],
+    height:360,
+    legend:{orientation:'h',y:1.1},
+    shapes: currentMetric==='bias'
+      ? [{type:'line',x0:-0.5,x1:stationNames.length-0.5,y0:0,y1:0,line:{color:'#333',dash:'dot',width:1}}]
+      : []
   });
+
 
   Plotly.newPlot('bar-chart', traces, layout, cfg());
 
