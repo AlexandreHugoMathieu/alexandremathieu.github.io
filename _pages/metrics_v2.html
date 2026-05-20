@@ -495,14 +495,12 @@ function biasColor(v, maxAbs) {
   if (maxAbs === 0) return '#ffffff';
   const t = Math.max(-1, Math.min(1, v / maxAbs)); // -1 to +1
   if (t < 0) {
-    // negative → red; t goes 0→-1 means white→red
     const intensity = Math.abs(t);
     const r = Math.round(255);
     const g = Math.round(255 * (1 - intensity));
     const b = Math.round(255 * (1 - intensity));
     return `rgb(${r},${g},${b})`;
   } else {
-    // positive → blue; t goes 0→+1 means white→blue
     const intensity = t;
     const r = Math.round(255 * (1 - intensity));
     const g = Math.round(255 * (1 - intensity));
@@ -543,7 +541,6 @@ function renderMap() {
   if (currentMetric === 'bias') {
     const maxAbs = Math.max(...values.map(Math.abs));
     getColor = v => biasColor(v, maxAbs);
-    // Update legend
     document.getElementById('map-legend').innerHTML = `
       <span><span class="legend-dot" style="background:#ff0000;border:1px solid #ccc"></span>Negative bias</span>
       <span><span class="legend-dot" style="background:#ffffff;border:1px solid #ccc"></span>No bias</span>
@@ -776,7 +773,7 @@ Plotly.newPlot('chart-scatter',[
     mode:'markers',
     name:'Data',
     marker:{
-      color:'#708090',   // ✅ grey like residuals
+      color:'#708090',   
       size:4,
       opacity:alpha
     }
@@ -932,7 +929,6 @@ function loadDemoData() {
         dates.push(dt.toISOString().slice(0,13)+':00:00');
         const doy=(d-new Date(d.getFullYear(),0,0))/86400000;
         const solar=Math.max(0,600*Math.sin(Math.PI*(doy-80)/365)*Math.sin(Math.PI*h/24)+(Math.random()-.5)*20);
-        // Give stations mixed positive/negative biases for demo
         const bias=(lat-45)*.8+(lon>0?3:-3)+(Math.random()-.5)*5;
         obs.push(+(solar+(Math.random()-.5)*15).toFixed(1));
         corres.push(+(solar+bias+(Math.random()-.5)*10).toFixed(1));
