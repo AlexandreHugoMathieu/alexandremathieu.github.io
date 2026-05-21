@@ -371,6 +371,7 @@ function rebuildStationData() {
   const corres = loadedFiles[`${currentVar}_corres`];
   if (!obs || !corres) return;
 
+  if (!obs.length || !corres.length) return;
   const cols    = Object.keys(obs[0]);
   const dateCol = cols[0];
 
@@ -648,41 +649,6 @@ function openDetail(id) {
   panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   const yLabel = unitLabel(currentVar);
-
-  /* Time series — trim leading/trailing NaNs */
-  const validIdx = s.obs
-    .map((o, i) => (o != null && !isNaN(o) && s.corres[i] != null && !isNaN(s.corres[i])) ? i : null)
-    .filter(i => i !== null);
-
-  const start    = validIdx.length ? Math.min(...validIdx) : 0;
-  const end      = validIdx.length ? Math.max(...validIdx) : s.dates.length - 1;
-  const datesSub = s.dates.slice(start, end + 1);
-  const obsSub   = s.obs.slice(start, end + 1);
-  const corSub   = s.corres.slice(start, end + 1);
-
-  Plotly.newPlot('chart-ts', [
-    { x: datesSub, y: obsSub, name: 'Observations', mode: 'lines+markers', marker: { size: 3 }, line: { color: '#2563eb', width: 1 } },
-    { x: datesSub, y: corSub, name: 'Estimates',    mode: 'lines+markers', marker: { size: 3 }, line: { color: '#d97706', width: 1 } },
-  ], lightLayout({
-    xaxis: { title: 'Date', range: [datesSub[0], datesSub[datesSub.length - 1]] },
-    yaxis: { title: yLabel },
-    height: 280
-  }), cfg());
-
-  /* Residuals */
-  const resid    = s.obs.map((o, i) =>
-    (o != null && !isNaN(o) && s.corres[i] != null && !isNaN(s.corres[i])) ? s.corres[i] - o : null
-  );
-  const residSub = resid.slice(start, end + 1);
-
-  Plotly.newPlot('chart-resid', [
-    { x: datesSub, y: residSub, name: 'Residuals', mode: 'lines', line: { color: '#708090', width: 1 } },
-    { x: [datesSub[0], datesSub[datesSub.length - 1]], y: [0, 0], mode: 'lines', line: { color: '#dc2626', dash: 'dash', width: 1.2 }, showlegend: false }
-  ], lightLayout({
-    xaxis: { title: 'Date' },
-    yaxis: { title: `Residual [${unit}]` },
-    height: 240
-  }), cfg());
 
   /* Scatter */
   const scatterPairs = s.obs.map((o, i) => [o, s.corres[i]])
