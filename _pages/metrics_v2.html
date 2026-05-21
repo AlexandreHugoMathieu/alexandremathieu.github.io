@@ -793,16 +793,16 @@ function closeDetail() {
 function lightLayout(extra={}) {
   const xl = extra.xaxis || {};
   const yl = extra.yaxis || {};
-  const { xaxis, yaxis, legend, ...rest } = extra;  // destructure to avoid duplicate keys
+  const { xaxis, yaxis, ...restExtra } = extra;
   return {
-    paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: '#fafbfc',
-    font: { family: 'IBM Plex Mono, monospace', color: '#6b7280', size: 11 },
-    xaxis: { gridcolor: '#e5e7eb', linecolor: '#d1d5db', zerolinecolor: '#d1d5db', ...xl },
-    yaxis: { gridcolor: '#e5e7eb', linecolor: '#d1d5db', zerolinecolor: '#d1d5db', ...yl },
-    margin: { t: 24, b: 52, l: 58, r: 20 },
-    legend: { font: { color: '#4b5563' }, bgcolor: 'rgba(0,0,0,0)', ...(extra.legend || {}) },
-    height: 340,
-    ...rest,  // spread remaining extra props (height, barmode, shapes, etc.) — but NOT xaxis/yaxis
+    paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'#fafbfc',
+    font:{family:'IBM Plex Mono, monospace',color:'#6b7280',size:11},
+    xaxis:{gridcolor:'#e5e7eb',linecolor:'#d1d5db',zerolinecolor:'#d1d5db',...xl},
+    yaxis:{gridcolor:'#e5e7eb',linecolor:'#d1d5db',zerolinecolor:'#d1d5db',...yl},
+    margin:{t:24,b:52,l:58,r:20},
+    legend:{font:{color:'#4b5563'},bgcolor:'rgba(0,0,0,0)',...(extra.legend||{})},
+    height:340,
+    ...restExtra,
   };
 }
 
