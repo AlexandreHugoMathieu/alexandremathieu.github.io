@@ -153,8 +153,6 @@ layout: default
   /* Legend */
   .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: .8rem; color: var(--muted); }
   .legend-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
-
-  /* Clickable station labels in bar chart — handled via Plotly click events */
 </style>
 </head>
 <body>
@@ -215,9 +213,7 @@ layout: default
   <div class="section">
     <div class="section-title">Station Overview — <span id="map-label" style="color:var(--accent)">BIAS · GHI</span></div>
     <div id="map-container"></div>
-    <div class="legend" style="margin-top:10px" id="map-legend">
-      <!-- updated dynamically -->
-    </div>
+    <div class="legend" style="margin-top:10px" id="map-legend"></div>
   </div>
 
   <!-- SUMMARY TABLE -->
@@ -240,7 +236,7 @@ layout: default
     </div>
   </div>
 
-  <!-- SEASONAL BAR CHART — below table -->
+  <!-- SEASONAL BAR CHART -->
   <div class="section">
     <div class="section-title"><span id="bar-label">BIAS by Season — All Stations</span></div>
     <div id="bar-chart" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:8px;box-shadow:var(--shadow);"></div>
@@ -255,13 +251,11 @@ layout: default
       <button class="close-btn" onclick="closeDetail()">✕ Close</button>
     </div>
 
-    <!-- Time series -->
     <div class="chart-card">
       <div class="chart-card-title">Time Series — Observations vs Estimates</div>
       <div id="chart-ts"></div>
     </div>
 
-    <!-- Residuals + Scatter -->
     <div class="charts-grid-2">
       <div class="chart-card">
         <div class="chart-card-title">Residuals (Corres − Obs)</div>
@@ -273,7 +267,6 @@ layout: default
       </div>
     </div>
 
-    <!-- CDF + Seasonal BIAS -->
     <div class="charts-grid-2">
       <div class="chart-card">
         <div class="chart-card-title">CDF Comparison</div>
@@ -285,7 +278,6 @@ layout: default
       </div>
     </div>
 
-    <!-- Seasonal RMSE + Diurnal -->
     <div class="charts-grid-2">
       <div class="chart-card">
         <div class="chart-card-title">Seasonal RMSE</div>
@@ -297,7 +289,6 @@ layout: default
       </div>
     </div>
 
-    <!-- Monthly average -->
     <div class="chart-card">
       <div class="chart-card-title">Monthly Average</div>
       <div id="chart-monthly"></div>
@@ -306,19 +297,20 @@ layout: default
 
 </div><!-- /#app -->
 
+{% raw %}
 <script>
 /* ══ PASSWORD ══ */
 const PW_HASH = '5525ce32b81d54441b3bd59c80ddbecc23b78f0facc11788dbfb5f931bd6ec1d';
+
 async function sha256(s) {
   const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
-  return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');
+  return Array.from(new Uint8Array(b)).map(x => x.toString(16).padStart(2,'0')).join('');
 }
+
 async function tryLogin() {
   const input = document.getElementById('pw-input').value;
   const h = await sha256(input);
-
-  console.log("Entered password:", input);
-  console.log("Computed hash:", h);
+  // FIX: removed console.log of plaintext password and hash
   if (h === PW_HASH) {
     document.getElementById('gate').style.display = 'none';
     document.getElementById('app').style.display  = 'block';
@@ -326,7 +318,7 @@ async function tryLogin() {
   } else {
     const e = document.getElementById('pw-err');
     e.textContent = 'Incorrect password.';
-    setTimeout(()=>e.textContent='', 3000);
+    setTimeout(() => e.textContent = '', 3000);
     document.getElementById('pw-input').value = '';
   }
 }
@@ -341,7 +333,7 @@ let loadedFiles   = {};
 
 const VAR_LABELS = { ghi:'GHI', dhi:'DHI', dni:'DNI', poa:'POA', pac:'AC Power' };
 const VAR_UNITS  = { ghi:'W/m²', dhi:'W/m²', dni:'W/m²', poa:'W/m²', pac:'W' };
-const EXPECTED_FILES = ['ghi','dhi','dni','poa','pac'].flatMap(v=>[`${v}_obs`,`${v}_corres`]);
+const EXPECTED_FILES = ['ghi','dhi','dni','poa','pac'].flatMap(v => [`${v}_obs`, `${v}_corres`]);
 
 function unitLabel(v) { return `${VAR_LABELS[v]} [${VAR_UNITS[v]}]`; }
 function isPac() { return currentVar === 'pac'; }
@@ -349,9 +341,9 @@ function isPac() { return currentVar === 'pac'; }
 /* ══ FILE LOADING ══ */
 function handleFiles(evt) {
   Array.from(evt.target.files).forEach(f => {
-    const stem = f.name.replace(/\.csv$/i,'').toLowerCase();
+    const stem = f.name.replace(/\.csv$/i, '').toLowerCase();
     Papa.parse(f, {
-      header:true, dynamicTyping:true, skipEmptyLines:true,
+      header: true, dynamicTyping: true, skipEmptyLines: true,
       complete: res => {
         loadedFiles[stem] = res.data;
         rebuildStationData();
@@ -366,7 +358,7 @@ function handleKwpFile(evt) {
   const f = evt.target.files[0];
   if (!f) return;
   Papa.parse(f, {
-    header:true, dynamicTyping:true, skipEmptyLines:true,
+    header: true, dynamicTyping: true, skipEmptyLines: true,
     complete: res => {
       kwpData = {};
       res.data.forEach(row => {
@@ -391,43 +383,46 @@ function rebuildStationData() {
   const dateCol = cols[0];
 
   if (cols.includes('station') && cols.includes('value')) {
-    [...new Set(obs.map(r=>r.station))].forEach(s => {
-      const o = obs.filter(r=>r.station===s);
-      const c = corres.filter(r=>r.station===s);
-      const lat = o[0].lat ?? randomLat(s), lon = o[0].lon ?? randomLon(s);
-      stationData[s] = { lat, lon, name:s, dates:o.map(r=>r[dateCol]), obs:o.map(r=>r.value), corres:c.map(r=>r.value) };
+    [...new Set(obs.map(r => r.station))].forEach(s => {
+      const o   = obs.filter(r => r.station === s);
+      const c   = corres.filter(r => r.station === s);
+      const lat = o[0].lat ?? randomLat(s);
+      const lon = o[0].lon ?? randomLon(s);
+      stationData[s] = { lat, lon, name: s, dates: o.map(r => r[dateCol]), obs: o.map(r => r.value), corres: c.map(r => r.value) };
     });
   } else {
     cols.slice(1).forEach(s => {
       const parts = s.split('_');
       let lat, lon, name = s;
-      if (parts.length>=3 && !isNaN(parseFloat(parts[parts.length-2]))) {
-        lat  = parseFloat(parts[parts.length-2]);
-        lon  = parseFloat(parts[parts.length-1]);
-        name = parts.slice(0,parts.length-2).join('_');
-      } else { lat=randomLat(s); lon=randomLon(s); }
-      stationData[s] = { lat, lon, name, dates:obs.map(r=>r[dateCol]), obs:obs.map(r=>r[s]), corres:corres.map(r=>r[s]) };
+      if (parts.length >= 3 && !isNaN(parseFloat(parts[parts.length - 2]))) {
+        lat  = parseFloat(parts[parts.length - 2]);
+        lon  = parseFloat(parts[parts.length - 1]);
+        name = parts.slice(0, parts.length - 2).join('_');
+      } else {
+        lat = randomLat(s);
+        lon = randomLon(s);
+      }
+      stationData[s] = { lat, lon, name, dates: obs.map(r => r[dateCol]), obs: obs.map(r => r[s]), corres: corres.map(r => r[s]) };
     });
   }
 }
 
-function randomLat(s) { const x=s.charCodeAt(0)+s.charCodeAt(s.length-1); return 44+((x*7)%15); }
-function randomLon(s) { const x=s.charCodeAt(0)+s.charCodeAt(s.length-1); return -5+((x*3)%25); }
+function randomLat(s) { const x = s.charCodeAt(0) + s.charCodeAt(s.length - 1); return 44 + ((x * 7) % 15); }
+function randomLon(s) { const x = s.charCodeAt(0) + s.charCodeAt(s.length - 1); return -5 + ((x * 3) % 25); }
 
 function updateFileStatus() {
   const container = document.getElementById('file-tags');
   let html = EXPECTED_FILES.map(f => {
     const ok = !!loadedFiles[f];
-    return `<span class="file-tag ${ok?'loaded':'missing'}">${ok?'✓':'○'} ${f}.csv</span>`;
+    return `<span class="file-tag ${ok ? 'loaded' : 'missing'}">${ok ? '✓' : '○'} ${f}.csv</span>`;
   }).join('');
   const kn = Object.keys(kwpData).length;
   if (kn) html += `<span class="file-tag loaded">✓ kwp (${kn} stations)</span>`;
   container.innerHTML = html;
   const n = Object.keys(loadedFiles).length;
-  document.getElementById('data-status').textContent = `${n} file${n!==1?'s':''} loaded`;
+  document.getElementById('data-status').textContent = `${n} file${n !== 1 ? 's' : ''} loaded`;
 }
 
-/* Show/hide kWp upload button and table column */
 function updateKwpVisibility() {
   const show = isPac();
   document.getElementById('kwp-upload-wrap').style.display = show ? '' : 'none';
@@ -435,106 +430,89 @@ function updateKwpVisibility() {
 }
 
 /* ══ METRICS ══ */
-
 function computeMetrics(obs, corres) {
+  const pairs = obs.map((o, i) => [o, corres[i]])
+    .filter(([a, b]) => a != null && b != null && !isNaN(a) && !isNaN(b) && a > 0);
 
-  const pairs = obs.map((o,i)=>[o,corres[i]])
-    .filter(([a,b]) => (
-      a != null &&
-      b != null &&
-      !isNaN(a) &&
-      !isNaN(b) &&
-      a > 0
-    ));
-
-  if (!pairs.length) return {bias:0,rmse:0,r2:0,meanObs:0,meanCorres:0,n:0};
+  // FIX: consistent fallback — use r:NaN (not r2:0) to match the computed field name
+  if (!pairs.length) return { bias: 0, rmse: 0, r: NaN, meanObs: 0, meanCorres: 0, n: 0 };
 
   const n    = pairs.length;
-  const mObs = pairs.reduce((s,[a])=>s+a,0)/n;
-  const mCor = pairs.reduce((s,[,b])=>s+b,0)/n;
+  const mObs = pairs.reduce((s, [a])    => s + a, 0) / n;
+  const mCor = pairs.reduce((s, [, b]) => s + b, 0) / n;
 
   const bias = mCor - mObs;
-  const rmse = Math.sqrt(pairs.reduce((s,[a,b])=>s+(b-a)**2,0)/n);
+  const rmse = Math.sqrt(pairs.reduce((s, [a, b]) => s + (b - a) ** 2, 0) / n);
 
+  const cov    = pairs.reduce((s, [a, b]) => s + (a - mObs) * (b - mCor), 0) / n;
+  const stdObs = Math.sqrt(pairs.reduce((s, [a])    => s + (a - mObs) ** 2, 0) / n);
+  const stdCor = Math.sqrt(pairs.reduce((s, [, b]) => s + (b - mCor) ** 2, 0) / n);
+  const r      = (stdObs > 0 && stdCor > 0) ? cov / (stdObs * stdCor) : NaN;
 
-
-  const cov = pairs.reduce((s,[a,b]) => s + (a - mObs)*(b - mCor), 0) / n;
-  const stdObs = Math.sqrt(pairs.reduce((s,[a]) => s + (a - mObs)**2, 0) / n);
-  const stdCor = Math.sqrt(pairs.reduce((s,[,b]) => s + (b - mCor)**2, 0) / n);
-
-  const r = (stdObs > 0 && stdCor > 0) ? cov / (stdObs * stdCor) : NaN;
-
-
-
-  return {bias, rmse, r, meanObs: mObs, meanCorres: mCor, n};
+  return { bias, rmse, r, meanObs: mObs, meanCorres: mCor, n };
 }
 
-
 function seasonOf(d) {
-  const m = new Date(d).getMonth()+1;
-  if (isNaN(m)) return 'Unknown';
-  if (m<=2||m===12) return 'Winter';
-  if (m<=5) return 'Spring';
-  if (m<=8) return 'Summer';
+  const m = new Date(d).getMonth() + 1;
+  if (isNaN(m))  return 'Unknown';
+  if (m <= 2 || m === 12) return 'Winter';
+  if (m <= 5)    return 'Spring';
+  if (m <= 8)    return 'Summer';
   return 'Autumn';
 }
 
 function getSeasonalMetrics(station) {
-  const seasons = ['Winter','Spring','Summer','Autumn'];
+  const seasons = ['Winter', 'Spring', 'Summer', 'Autumn'];
   const out = {};
   seasons.forEach(s => {
-    const idx = station.dates.map((d,i)=>({d,i})).filter(({d})=>seasonOf(d)===s).map(({i})=>i);
-    if (!idx.length) { out[s]={bias:0,rmse:0}; return; }
-    out[s] = computeMetrics(idx.map(i=>station.obs[i]), idx.map(i=>station.corres[i]));
+    const idx = station.dates
+      .map((d, i) => ({ d, i }))
+      .filter(({ d }) => seasonOf(d) === s)
+      .map(({ i }) => i);
+    if (!idx.length) { out[s] = { bias: 0, rmse: 0 }; return; }
+    out[s] = computeMetrics(idx.map(i => station.obs[i]), idx.map(i => station.corres[i]));
   });
   return out;
 }
 
-/* ══ BIAS COLOR: red (negative) → white (0) → blue (positive) ══ */
+/* ══ COLOR SCALES ══ */
 function biasColor(v, maxAbs) {
   if (maxAbs === 0) return '#ffffff';
-  const t = Math.max(-1, Math.min(1, v / maxAbs)); // -1 to +1
+  const t = Math.max(-1, Math.min(1, v / maxAbs));
   if (t < 0) {
-    const intensity = Math.abs(t);
-    const r = Math.round(255);
-    const g = Math.round(255 * (1 - intensity));
-    const b = Math.round(255 * (1 - intensity));
-    return `rgb(${r},${g},${b})`;
+    const i = Math.abs(t);
+    return `rgb(255,${Math.round(255*(1-i))},${Math.round(255*(1-i))})`;
   } else {
-    const intensity = t;
-    const r = Math.round(255 * (1 - intensity));
-    const g = Math.round(255 * (1 - intensity));
-    const b = Math.round(255);
-    return `rgb(${r},${g},${b})`;
+    const i = t;
+    return `rgb(${Math.round(255*(1-i))},${Math.round(255*(1-i))},255)`;
   }
 }
 
-/* RMSE color: white → blue (magnitude only) */
 function rmseColor(v, lo, hi) {
   if (hi <= lo) return '#8b949e';
   const t = Math.min(1, Math.max(0, (v - lo) / (hi - lo)));
-  return `rgb(${Math.round(255-t*205)},${Math.round(255-t*180)},${Math.round(255-t*55)})`;
+  return `rgb(${Math.round(255 - t*205)},${Math.round(255 - t*180)},${Math.round(255 - t*55)})`;
 }
 
 /* ══ MAP ══ */
 function initMap() {
-  map = L.map('map-container',{zoomControl:true}).setView([48,10],4);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
-    attribution:'© OpenStreetMap, © CartoDB', maxZoom:18
+  map = L.map('map-container', { zoomControl: true }).setView([48, 10], 4);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© OpenStreetMap, © CartoDB', maxZoom: 18
   }).addTo(map);
 }
 
 function renderMap() {
   if (!map) return;
-  markers.forEach(m=>map.removeLayer(m));
-  markers=[];
+  markers.forEach(m => map.removeLayer(m));
+  markers = [];
   const ids = Object.keys(stationData);
   if (!ids.length) return;
 
-  const values = ids.map(id=>{
-    const s=stationData[id];
-    const m=computeMetrics(s.obs,s.corres);
-    return currentMetric==='bias'?m.bias:m.rmse;
+  const values = ids.map(id => {
+    const s = stationData[id];
+    const m = computeMetrics(s.obs, s.corres);
+    return currentMetric === 'bias' ? m.bias : m.rmse;
   });
 
   let getColor;
@@ -548,7 +526,7 @@ function renderMap() {
       <span style="margin-left:auto;font-size:.72rem">Click a marker to inspect ↓</span>`;
   } else {
     const absVals = values.map(Math.abs);
-    const lo=Math.min(...absVals), hi=Math.max(...absVals);
+    const lo = Math.min(...absVals), hi = Math.max(...absVals);
     getColor = v => rmseColor(Math.abs(v), lo, hi);
     document.getElementById('map-legend').innerHTML = `
       <span><span class="legend-dot" style="background:#ffffff;border:1px solid #ccc"></span>Low RMSE (good)</span>
@@ -557,91 +535,90 @@ function renderMap() {
       <span style="margin-left:auto;font-size:.72rem">Click a marker to inspect ↓</span>`;
   }
 
-  ids.forEach((id,i)=>{
-    const s=stationData[id];
-    const v=values[i];
-    const col=getColor(v);
+  ids.forEach((id, i) => {
+    const s   = stationData[id];
+    const v   = values[i];
+    const col = getColor(v);
     const kwpStr = isPac() && kwpData[s.name] ? ` | kWp: ${kwpData[s.name]}` : '';
-    const m=L.circleMarker([s.lat,s.lon],{
-      radius:10, fillColor:col, color:'#555', weight:1.5, opacity:1, fillOpacity:.92
+    const m = L.circleMarker([s.lat, s.lon], {
+      radius: 10, fillColor: col, color: '#555', weight: 1.5, opacity: 1, fillOpacity: .92
     })
-    .bindTooltip(`<b>${s.name}</b><br>${currentMetric.toUpperCase()}: ${v.toFixed(2)} ${VAR_UNITS[currentVar]}${kwpStr}`,{sticky:true})
-    .on('click',()=>openDetail(id))
+    .bindTooltip(`<b>${s.name}</b><br>${currentMetric.toUpperCase()}: ${v.toFixed(2)} ${VAR_UNITS[currentVar]}${kwpStr}`, { sticky: true })
+    .on('click', () => openDetail(id))
     .addTo(map);
     markers.push(m);
   });
 
   if (ids.length) {
-    const lats=ids.map(id=>stationData[id].lat), lons=ids.map(id=>stationData[id].lon);
-    map.fitBounds([[Math.min(...lats)-1,Math.min(...lons)-1],[Math.max(...lats)+1,Math.max(...lons)+1]]);
+    const lats = ids.map(id => stationData[id].lat);
+    const lons = ids.map(id => stationData[id].lon);
+    map.fitBounds([[Math.min(...lats) - 1, Math.min(...lons) - 1], [Math.max(...lats) + 1, Math.max(...lons) + 1]]);
   }
-  document.getElementById('map-label').textContent=`${currentMetric.toUpperCase()} · ${VAR_LABELS[currentVar]}`;
+  document.getElementById('map-label').textContent = `${currentMetric.toUpperCase()} · ${VAR_LABELS[currentVar]}`;
 }
 
-/* ══ SEASONAL BAR CHART (clickable stations) ══ */
+/* ══ SEASONAL BAR CHART ══ */
 function renderBarChart() {
-  const ids=Object.keys(stationData);
-  if (!ids.length){Plotly.purge('bar-chart');return;}
-  const seasons=['Winter','Spring','Summer','Autumn'];
-  const colors={Winter:'#2563eb',Spring:'#16a34a',Summer:'#d97706',Autumn:'#dc2626'};
-  const stationNames = ids.map(id=>stationData[id].name);
+  const ids = Object.keys(stationData);
+  if (!ids.length) { Plotly.purge('bar-chart'); return; }
 
-  const traces=seasons.map(season=>({
-    name:season, type:'bar',
+  const seasons = ['Winter', 'Spring', 'Summer', 'Autumn'];
+  const colors  = { Winter: '#2563eb', Spring: '#16a34a', Summer: '#d97706', Autumn: '#dc2626' };
+  const stationNames = ids.map(id => stationData[id].name);
+
+  const traces = seasons.map(season => ({
+    name: season, type: 'bar',
     x: stationNames,
-    y: ids.map(id=>{
-      const sm=getSeasonalMetrics(stationData[id]);
-      return currentMetric==='bias'?sm[season].bias:sm[season].rmse;
+    y: ids.map(id => {
+      const sm = getSeasonalMetrics(stationData[id]);
+      return currentMetric === 'bias' ? sm[season].bias : sm[season].rmse;
     }),
-    marker:{color:colors[season]},
+    marker: { color: colors[season] },
   }));
 
-  
   const layout = lightLayout({
-    barmode:'group',
-    xaxis:{title:'Station', tickangle:-30},
-    yaxis:{title:`${currentMetric.toUpperCase()} [${VAR_UNITS[currentVar]}]`},
-    height:360,
-    legend:{orientation:'h',y:1.1},
-    shapes: currentMetric==='bias'
-      ? [{type:'line',x0:-0.5,x1:stationNames.length-0.5,y0:0,y1:0,line:{color:'#333',dash:'dot',width:1}}]
+    barmode: 'group',
+    xaxis: { title: 'Station', tickangle: -30 },
+    yaxis: { title: `${currentMetric.toUpperCase()} [${VAR_UNITS[currentVar]}]` },
+    height: 360,
+    legend: { orientation: 'h', y: 1.1 },
+    shapes: currentMetric === 'bias'
+      ? [{ type: 'line', x0: -0.5, x1: stationNames.length - 0.5, y0: 0, y1: 0, line: { color: '#333', dash: 'dot', width: 1 } }]
       : []
   });
 
-
   Plotly.newPlot('bar-chart', traces, layout, cfg());
 
-  // Make station names clickable — open detail on click
   document.getElementById('bar-chart').on('plotly_click', data => {
     const stationName = data.points[0].x;
-    const id = Object.keys(stationData).find(id=>stationData[id].name===stationName);
+    const id = Object.keys(stationData).find(id => stationData[id].name === stationName);
     if (id) openDetail(id);
   });
 
-  document.getElementById('bar-label').textContent=
+  document.getElementById('bar-label').textContent =
     `${currentMetric.toUpperCase()} by Season — All Stations (${unitLabel(currentVar)})`;
 }
 
 /* ══ SUMMARY TABLE ══ */
 function renderTable() {
-  const tbody=document.getElementById('summary-tbody');
-  const ids=Object.keys(stationData);
+  const tbody   = document.getElementById('summary-tbody');
+  const ids     = Object.keys(stationData);
   const showKwp = isPac();
 
-  // Show/hide kWp column header
-  document.querySelectorAll('.col-kwp').forEach(el=>el.style.display=showKwp?'':'none');
+  document.querySelectorAll('.col-kwp').forEach(el => el.style.display = showKwp ? '' : 'none');
 
-  if (!ids.length){
-    tbody.innerHTML=`<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:32px">Load CSV files to populate.</td></tr>`;
+  if (!ids.length) {
+    tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:32px">Load CSV files to populate.</td></tr>`;
     return;
   }
-  tbody.innerHTML=ids.map(id=>{
-    const s=stationData[id];
-    const m=computeMetrics(s.obs,s.corres);
-    const kwpCell = showKwp
-      ? `<td class="col-kwp">${kwpData[s.name]?kwpData[s.name]+' kWp':'—'}</td>`
-      : `<td class="col-kwp" style="display:none">${kwpData[s.name]?kwpData[s.name]+' kWp':'—'}</td>`;
-    const biasClass=Math.abs(m.bias)>Math.abs(m.meanObs)*0.1?'td-bad':'td-good';
+
+  tbody.innerHTML = ids.map(id => {
+    const s = stationData[id];
+    const m = computeMetrics(s.obs, s.corres);
+    const kwpCell   = `<td class="col-kwp" style="${showKwp ? '' : 'display:none'}">${kwpData[s.name] ? kwpData[s.name] + ' kWp' : '—'}</td>`;
+    const biasClass = Math.abs(m.bias) > Math.abs(m.meanObs) * 0.1 ? 'td-bad' : 'td-good';
+    const rClass    = isNaN(m.r) ? '' : m.r > 0.9 ? 'td-good' : m.r > 0.7 ? '' : 'td-bad';
+    const rDisplay  = isNaN(m.r) ? '—' : m.r.toFixed(3);
     return `<tr>
       <td class="td-name" onclick="openDetail('${id}')">${s.name}</td>
       <td>${s.lat.toFixed(2)}</td><td>${s.lon.toFixed(2)}</td>
@@ -650,304 +627,253 @@ function renderTable() {
       <td>${m.meanObs.toFixed(2)}</td><td>${m.meanCorres.toFixed(2)}</td>
       <td class="${biasClass}">${m.bias.toFixed(2)}</td>
       <td>${m.rmse.toFixed(2)}</td>
-      <td class="${m.r>0.9?'td-good':m.r>0.7?'':'td-bad'}">${m.r.toFixed(3)}</td>
+      <td class="${rClass}">${rDisplay}</td>
     </tr>`;
   }).join('');
 }
 
 /* ══ STATION DETAIL ══ */
 function openDetail(id) {
-  const s=stationData[id];
+  const s = stationData[id];
   if (!s) return;
-  const m=computeMetrics(s.obs,s.corres);
-  const unit=VAR_UNITS[currentVar];
+  const m    = computeMetrics(s.obs, s.corres);
+  const unit = VAR_UNITS[currentVar];
 
-  document.getElementById('detail-name').textContent=`📍 ${s.name}`;
+  document.getElementById('detail-name').textContent = `📍 ${s.name}`;
   const kwpChip = isPac() && kwpData[s.name] ? [['kWp', kwpData[s.name]]] : [];
-  document.getElementById('detail-chips').innerHTML=[
-    ['N',m.n],
-    ['BIAS',`${m.bias.toFixed(2)} ${unit}`],
-    ['RMSE',`${m.rmse.toFixed(2)} ${unit}`],
-	['R',m.r.toFixed(3)],
-    ['Mean Obs',`${m.meanObs.toFixed(1)} ${unit}`],
+  document.getElementById('detail-chips').innerHTML = [
+    ['N', m.n],
+    ['BIAS', `${m.bias.toFixed(2)} ${unit}`],
+    ['RMSE', `${m.rmse.toFixed(2)} ${unit}`],
+    ['R', isNaN(m.r) ? '—' : m.r.toFixed(3)],
+    ['Mean Obs', `${m.meanObs.toFixed(1)} ${unit}`],
     ...kwpChip
-  ].map(([l,v])=>`<div class="chip"><div class="chip-label">${l}</div><div class="chip-value">${v}</div></div>`).join('');
+  ].map(([l, v]) => `<div class="chip"><div class="chip-label">${l}</div><div class="chip-value">${v}</div></div>`).join('');
 
-  const panel=document.getElementById('detail-panel');
-  panel.style.display='flex';
-  panel.scrollIntoView({behavior:'smooth',block:'start'});
+  const panel = document.getElementById('detail-panel');
+  panel.style.display = 'flex';
+  panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-  const yLabel=unitLabel(currentVar);
+  const yLabel = unitLabel(currentVar);
 
-/* Time series */
-// --- Filter valid window (exclude leading/trailing NaNs)
-const validIdx = s.obs
-  .map((o,i)=> (o!=null && !isNaN(o) && s.corres[i]!=null && !isNaN(s.corres[i])) ? i : null)
-  .filter(i => i !== null);
+  /* Time series — trim leading/trailing NaNs */
+  const validIdx = s.obs
+    .map((o, i) => (o != null && !isNaN(o) && s.corres[i] != null && !isNaN(s.corres[i])) ? i : null)
+    .filter(i => i !== null);
 
-const start = validIdx.length ? Math.min(...validIdx) : 0;
-const end   = validIdx.length ? Math.max(...validIdx) : s.dates.length - 1;
+  const start    = validIdx.length ? Math.min(...validIdx) : 0;
+  const end      = validIdx.length ? Math.max(...validIdx) : s.dates.length - 1;
+  const datesSub = s.dates.slice(start, end + 1);
+  const obsSub   = s.obs.slice(start, end + 1);
+  const corSub   = s.corres.slice(start, end + 1);
 
-const datesSub = s.dates.slice(start, end+1);
-const obsSub   = s.obs.slice(start, end+1);
-const corSub   = s.corres.slice(start, end+1);
+  Plotly.newPlot('chart-ts', [
+    { x: datesSub, y: obsSub, name: 'Observations', mode: 'lines+markers', marker: { size: 3 }, line: { color: '#2563eb', width: 1 } },
+    { x: datesSub, y: corSub, name: 'Estimates',    mode: 'lines+markers', marker: { size: 3 }, line: { color: '#d97706', width: 1 } },
+  ], lightLayout({
+    xaxis: { title: 'Date', range: [datesSub[0], datesSub[datesSub.length - 1]] },
+    yaxis: { title: yLabel },
+    height: 280
+  }), cfg());
 
-// --- Plot with markers
-Plotly.newPlot('chart-ts',[
-  {
-    x:datesSub, y:obsSub,
-    name:'Observations',
-    mode:'lines+markers',
-    marker:{size:3, symbol:'circle'},
-    line:{color:'#2563eb',width:1}
-  },
-  {
-    x:datesSub, y:corSub,
-    name:'Estimates',
-    mode:'lines+markers',
-    marker:{size:3, symbol:'circle'},
-    line:{color:'#d97706',width:1}
-  },
-], lightLayout({
-  xaxis:{title:'Date', range:[datesSub[0], datesSub[datesSub.length-1]]},
-  yaxis:{title:yLabel},
-  height:280
-}), cfg());
+  /* Residuals */
+  const resid    = s.obs.map((o, i) =>
+    (o != null && !isNaN(o) && s.corres[i] != null && !isNaN(s.corres[i])) ? s.corres[i] - o : null
+  );
+  const residSub = resid.slice(start, end + 1);
 
+  Plotly.newPlot('chart-resid', [
+    { x: datesSub, y: residSub, name: 'Residuals', mode: 'lines', line: { color: '#708090', width: 1 } },
+    { x: [datesSub[0], datesSub[datesSub.length - 1]], y: [0, 0], mode: 'lines', line: { color: '#dc2626', dash: 'dash', width: 1.2 }, showlegend: false }
+  ], lightLayout({
+    xaxis: { title: 'Date' },
+    yaxis: { title: `Residual [${unit}]` },
+    height: 240
+  }), cfg());
 
+  /* Scatter */
+  const scatterPairs = s.obs.map((o, i) => [o, s.corres[i]])
+    .filter(([a, b]) => a != null && b != null && !isNaN(a) && !isNaN(b));
+  const sx     = scatterPairs.map(p => p[0]);
+  const sy     = scatterPairs.map(p => p[1]);
+  const allV   = [...sx, ...sy];
+  const slo    = Math.min(...allV), shi = Math.max(...allV);
+  const alpha  = Math.min(0.6, Math.max(0.1, 800 / s.obs.length));
 
-/* Residuals — slate grey */
-
-// compute residuals
-const resid = s.obs.map((o,i) =>
-  (o != null && !isNaN(o) && s.corres[i] != null && !isNaN(s.corres[i]))
-    ? s.corres[i] - o
-    : null
-);
-
-// slice to valid window
-const residSub = resid.slice(start, end+1);
-
-// plot
-Plotly.newPlot('chart-resid',[
-  {
-    x: datesSub,
-    y: residSub,
-    name: 'Residuals',
-    mode: 'lines',
-    line: { color: '#708090', width: 1 }
-  },
-  {
-    x: [datesSub[0], datesSub[datesSub.length-1]],
-    y: [0, 0],
-    mode: 'lines',
-    line: { color: '#dc2626', dash: 'dash', width: 1.2 },
-    showlegend: false
-  }
-], lightLayout({
-  xaxis: { title: 'Date' },
-  yaxis: { title: `Residual [${unit}]` },
-  height: 240
-}), cfg());
-
-
-/* Scatter */
-const allVals=[...s.obs,...s.corres].filter(v=>v!=null&&!isNaN(v));
-const lo=Math.min(...allVals), hi=Math.max(...allVals);
-// --- Adaptive alpha based on number of points
-const nPoints = s.obs.length;
-const alpha = Math.min(0.6, Math.max(0.1, 800 / nPoints));
-
-// --- Filter valid pairs
-const scatterPairs = s.obs.map((o,i)=>[o,s.corres[i]])
-  .filter(([a,b]) => a!=null && b!=null && !isNaN(a) && !isNaN(b));
-
-const x = scatterPairs.map(p=>p[0]);
-const y = scatterPairs.map(p=>p[1]);
-
-
-Plotly.newPlot('chart-scatter',[
-  {
-    x:x,
-    y:y,
-    mode:'markers',
-    name:'Data',
-    marker:{
-      color:'#708090',   
-      size:4,
-      opacity:alpha
-    }
-  },
-  {
-    x:[lo,hi],
-    y:[lo,hi],
-    mode:'lines',
-    line:{color:'#dc2626',dash:'dash',width:1.5},
-    name:'1:1'
-  },
-], lightLayout({
-  xaxis:{title:`Observed [${unit}]`},
-  yaxis:{title:`Estimated [${unit}]`},
-  height:240
-}), cfg());
-
+  Plotly.newPlot('chart-scatter', [
+    { x: sx, y: sy, mode: 'markers', name: 'Data', marker: { color: '#708090', size: 4, opacity: alpha } },
+    { x: [slo, shi], y: [slo, shi], mode: 'lines', line: { color: '#dc2626', dash: 'dash', width: 1.5 }, name: '1:1' },
+  ], lightLayout({
+    xaxis: { title: `Observed [${unit}]` },
+    yaxis: { title: `Estimated [${unit}]` },
+    height: 240
+  }), cfg());
 
   /* CDF */
-  function cdf(arr){
-    const sorted=[...arr].filter(v=>v!=null&&!isNaN(v)).sort((a,b)=>a-b);
-    return {x:sorted,y:sorted.map((_,i)=>(i+1)/sorted.length)};
+  function cdf(arr) {
+    const sorted = [...arr].filter(v => v != null && !isNaN(v)).sort((a, b) => a - b);
+    return { x: sorted, y: sorted.map((_, i) => (i + 1) / sorted.length) };
   }
-  Plotly.newPlot('chart-cdf',[
-    {...cdf(s.obs),   name:'Observations',line:{color:'#2563eb'},mode:'lines'},
-    {...cdf(s.corres),name:'Estimates',   line:{color:'#d97706'},mode:'lines'},
-  ],lightLayout({xaxis:{title:yLabel},yaxis:{title:'Cumulative Probability'},height:240}),cfg());
+  Plotly.newPlot('chart-cdf', [
+    { ...cdf(s.obs),    name: 'Observations', line: { color: '#2563eb' }, mode: 'lines' },
+    { ...cdf(s.corres), name: 'Estimates',    line: { color: '#d97706' }, mode: 'lines' },
+  ], lightLayout({ xaxis: { title: yLabel }, yaxis: { title: 'Cumulative Probability' }, height: 240 }), cfg());
 
-  /* Seasonal BIAS */
-  const sm=getSeasonalMetrics(s);
-  const seas=['Winter','Spring','Summer','Autumn'];
-  const seasColors=['#2563eb','#16a34a','#d97706','#dc2626'];
-  const biasVals=seas.map(s=>sm[s].bias);
-  Plotly.newPlot('chart-seasonal-bias',[{
-    name:'BIAS',x:seas,y:biasVals,type:'bar',
-    marker:{color:seasColors},
-  }],lightLayout({
-    xaxis:{title:'Season'},yaxis:{title:`BIAS [${unit}]`},height:240,showlegend:false,
-    shapes:[{type:'line',x0:-0.5,x1:3.5,y0:0,y1:0,line:{color:'#333',dash:'dot',width:1}}],
-  }),cfg());
+  /* Seasonal BIAS & RMSE */
+  const sm        = getSeasonalMetrics(s);
+  const seas      = ['Winter', 'Spring', 'Summer', 'Autumn'];
+  const seasColors = ['#2563eb', '#16a34a', '#d97706', '#dc2626'];
 
-  /* Seasonal RMSE */
-  Plotly.newPlot('chart-seasonal-rmse',[{
-    name:'RMSE',x:seas,y:seas.map(s=>sm[s].rmse),type:'bar',
-    marker:{color:seasColors},
-  }],lightLayout({
-    xaxis:{title:'Season'},yaxis:{title:`RMSE [${unit}]`},height:240,showlegend:false,
-  }),cfg());
+  Plotly.newPlot('chart-seasonal-bias', [{
+    name: 'BIAS', x: seas, y: seas.map(s => sm[s].bias), type: 'bar', marker: { color: seasColors },
+  }], lightLayout({
+    xaxis: { title: 'Season' }, yaxis: { title: `BIAS [${unit}]` }, height: 240, showlegend: false,
+    shapes: [{ type: 'line', x0: -0.5, x1: 3.5, y0: 0, y1: 0, line: { color: '#333', dash: 'dot', width: 1 } }],
+  }), cfg());
+
+  Plotly.newPlot('chart-seasonal-rmse', [{
+    name: 'RMSE', x: seas, y: seas.map(s => sm[s].rmse), type: 'bar', marker: { color: seasColors },
+  }], lightLayout({
+    xaxis: { title: 'Season' }, yaxis: { title: `RMSE [${unit}]` }, height: 240, showlegend: false,
+  }), cfg());
 
   /* Diurnal cycle */
-  function diurnalBoth(dates,obs,corres) {
-    const byHour=Array.from({length:24},()=>({sObs:0,sCor:0,n:0}));
-    dates.forEach((d,i)=>{
-      const o=obs[i],c=corres[i];
-      if (o==null||isNaN(o)||c==null||isNaN(c)) return;
-      const h=new Date(d).getHours();
-      byHour[h].sObs+=o; byHour[h].sCor+=c; byHour[h].n++;
+  function diurnalBoth(dates, obs, corres) {
+    const byHour = Array.from({ length: 24 }, () => ({ sObs: 0, sCor: 0, n: 0 }));
+    dates.forEach((d, i) => {
+      const o = obs[i], c = corres[i];
+      if (o == null || isNaN(o) || c == null || isNaN(c)) return;
+      const h = new Date(d).getHours();
+      byHour[h].sObs += o; byHour[h].sCor += c; byHour[h].n++;
     });
-    const hours=Array.from({length:24},(_,h)=>h);
-    return {hours,obs:hours.map(h=>byHour[h].n?byHour[h].sObs/byHour[h].n:null),
-                   corres:hours.map(h=>byHour[h].n?byHour[h].sCor/byHour[h].n:null)};
+    const hours = Array.from({ length: 24 }, (_, h) => h);
+    return {
+      hours,
+      obs:    hours.map(h => byHour[h].n ? byHour[h].sObs / byHour[h].n : null),
+      corres: hours.map(h => byHour[h].n ? byHour[h].sCor / byHour[h].n : null),
+    };
   }
-  const dc=diurnalBoth(s.dates,s.obs,s.corres);
-  Plotly.newPlot('chart-diurnal',[
-    {x:dc.hours,y:dc.obs,   name:'Observations',line:{color:'#2563eb',width:2},mode:'lines+markers',marker:{size:5}},
-    {x:dc.hours,y:dc.corres,name:'Estimates',   line:{color:'#d97706',width:2},mode:'lines+markers',marker:{size:5}},
-  ],lightLayout({
-    xaxis:{title:'Hour of Day',dtick:2,range:[-0.5,23.5]},
-    yaxis:{title:yLabel},height:240,legend:{orientation:'h',y:1.12},
-  }),cfg());
+  const dc = diurnalBoth(s.dates, s.obs, s.corres);
+  Plotly.newPlot('chart-diurnal', [
+    { x: dc.hours, y: dc.obs,    name: 'Observations', line: { color: '#2563eb', width: 2 }, mode: 'lines+markers', marker: { size: 5 } },
+    { x: dc.hours, y: dc.corres, name: 'Estimates',    line: { color: '#d97706', width: 2 }, mode: 'lines+markers', marker: { size: 5 } },
+  ], lightLayout({
+    xaxis: { title: 'Hour of Day', dtick: 2, range: [-0.5, 23.5] },
+    yaxis: { title: yLabel },
+    height: 240,
+    legend: { orientation: 'h', y: 1.12 },
+  }), cfg());
 
   /* Monthly average */
-  function monthlyAvg(dates,obs,corres) {
-    const byM={};
-    dates.forEach((d,i)=>{
-      const o=obs[i],c=corres[i];
-      if (o==null||isNaN(o)||c==null||isNaN(c)) return;
-      const dt=new Date(d);
-      const k=`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}`;
-      if (!byM[k]) byM[k]={sObs:0,sCor:0,n:0};
-      byM[k].sObs+=o; byM[k].sCor+=c; byM[k].n++;
+  function monthlyAvg(dates, obs, corres) {
+    const byM = {};
+    dates.forEach((d, i) => {
+      const o = obs[i], c = corres[i];
+      if (o == null || isNaN(o) || c == null || isNaN(c)) return;
+      const dt = new Date(d);
+      const k  = `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, '0')}`;
+      if (!byM[k]) byM[k] = { sObs: 0, sCor: 0, n: 0 };
+      byM[k].sObs += o; byM[k].sCor += c; byM[k].n++;
     });
-    const keys=Object.keys(byM).sort();
-    return {months:keys,obs:keys.map(k=>byM[k].sObs/byM[k].n),corres:keys.map(k=>byM[k].sCor/byM[k].n)};
+    const keys = Object.keys(byM).sort();
+    return { months: keys, obs: keys.map(k => byM[k].sObs / byM[k].n), corres: keys.map(k => byM[k].sCor / byM[k].n) };
   }
-  const ma=monthlyAvg(s.dates,s.obs,s.corres);
-  Plotly.newPlot('chart-monthly',[
-    {x:ma.months,y:ma.obs,   name:'Observations',line:{color:'#2563eb',width:1.5},mode:'lines+markers',marker:{size:4}},
-    {x:ma.months,y:ma.corres,name:'Estimates',   line:{color:'#d97706',width:1.5},mode:'lines+markers',marker:{size:4}},
-  ],lightLayout({xaxis:{title:'Month'},yaxis:{title:yLabel},height:280,legend:{orientation:'h',y:1.08}}),cfg());
+  const ma = monthlyAvg(s.dates, s.obs, s.corres);
+  Plotly.newPlot('chart-monthly', [
+    { x: ma.months, y: ma.obs,    name: 'Observations', line: { color: '#2563eb', width: 1.5 }, mode: 'lines+markers', marker: { size: 4 } },
+    { x: ma.months, y: ma.corres, name: 'Estimates',    line: { color: '#d97706', width: 1.5 }, mode: 'lines+markers', marker: { size: 4 } },
+  ], lightLayout({ xaxis: { title: 'Month' }, yaxis: { title: yLabel }, height: 280, legend: { orientation: 'h', y: 1.08 } }), cfg());
 }
 
 function closeDetail() {
-  document.getElementById('detail-panel').style.display='none';
+  document.getElementById('detail-panel').style.display = 'none';
 }
 
-/* ══ PLOTLY LIGHT LAYOUT ══ */
+/* ══ PLOTLY LAYOUT — FIX: no duplicate xaxis/yaxis keys ══ */
 function lightLayout(extra={}) {
-  const xl=extra.xaxis||{}, yl=extra.yaxis||{};
+  const xl = extra.xaxis || {};
+  const yl = extra.yaxis || {};
+  const { xaxis, yaxis, legend, ...rest } = extra;  // destructure to avoid duplicate keys
   return {
-    paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'#fafbfc',
-    font:{family:'IBM Plex Mono, monospace',color:'#6b7280',size:11},
-    xaxis:{gridcolor:'#e5e7eb',linecolor:'#d1d5db',zerolinecolor:'#d1d5db',...xl},
-    yaxis:{gridcolor:'#e5e7eb',linecolor:'#d1d5db',zerolinecolor:'#d1d5db',...yl},
-    margin:{t:24,b:52,l:58,r:20},
-    legend:{font:{color:'#4b5563'},bgcolor:'rgba(0,0,0,0)',...(extra.legend||{})},
-    height:340,
-    ...extra,
-    xaxis:{gridcolor:'#e5e7eb',linecolor:'#d1d5db',zerolinecolor:'#d1d5db',...xl},
-    yaxis:{gridcolor:'#e5e7eb',linecolor:'#d1d5db',zerolinecolor:'#d1d5db',...yl},
+    paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: '#fafbfc',
+    font: { family: 'IBM Plex Mono, monospace', color: '#6b7280', size: 11 },
+    xaxis: { gridcolor: '#e5e7eb', linecolor: '#d1d5db', zerolinecolor: '#d1d5db', ...xl },
+    yaxis: { gridcolor: '#e5e7eb', linecolor: '#d1d5db', zerolinecolor: '#d1d5db', ...yl },
+    margin: { t: 24, b: 52, l: 58, r: 20 },
+    legend: { font: { color: '#4b5563' }, bgcolor: 'rgba(0,0,0,0)', ...(extra.legend || {}) },
+    height: 340,
+    ...rest,  // spread remaining extra props (height, barmode, shapes, etc.) — but NOT xaxis/yaxis
   };
 }
-function cfg(){return{displayModeBar:false,responsive:true};}
+
+function cfg() { return { displayModeBar: false, responsive: true }; }
 
 /* ══ CONTROLS ══ */
-function setVar(v,btn) {
-  currentVar=v;
-  document.querySelectorAll('#var-btns .btn').forEach(b=>b.classList.remove('active'));
+function setVar(v, btn) {
+  currentVar = v;
+  document.querySelectorAll('#var-btns .btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   updateKwpVisibility();
   rebuildStationData();
   renderAll();
 }
-function setMetric(m,btn) {
-  currentMetric=m;
-  document.querySelectorAll('#metric-btns .btn').forEach(b=>b.classList.remove('active'));
+function setMetric(m, btn) {
+  currentMetric = m;
+  document.querySelectorAll('#metric-btns .btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderAll();
 }
-function renderAll(){renderMap();renderTable();renderBarChart();}
+function renderAll() { renderMap(); renderTable(); renderBarChart(); }
 
 /* ══ DEMO DATA ══ */
 function loadDemoData() {
-  const stations=[
-    {id:'ST_Paris',   name:'Paris',   lat:48.85,lon:2.35 },
-    {id:'ST_Madrid',  name:'Madrid',  lat:40.42,lon:-3.70},
-    {id:'ST_Rome',    name:'Rome',    lat:41.90,lon:12.50},
-    {id:'ST_Munich',  name:'Munich',  lat:48.14,lon:11.58},
-    {id:'ST_Athens',  name:'Athens',  lat:37.98,lon:23.73},
-    {id:'ST_Hamburg', name:'Hamburg', lat:53.55,lon:10.00},
-    {id:'ST_Lyon',    name:'Lyon',    lat:45.75,lon:4.83 },
-    {id:'ST_Seville', name:'Seville', lat:37.39,lon:-5.99},
+  const stations = [
+    { id: 'ST_Paris',   name: 'Paris',   lat: 48.85, lon:  2.35 },
+    { id: 'ST_Madrid',  name: 'Madrid',  lat: 40.42, lon: -3.70 },
+    { id: 'ST_Rome',    name: 'Rome',    lat: 41.90, lon: 12.50 },
+    { id: 'ST_Munich',  name: 'Munich',  lat: 48.14, lon: 11.58 },
+    { id: 'ST_Athens',  name: 'Athens',  lat: 37.98, lon: 23.73 },
+    { id: 'ST_Hamburg', name: 'Hamburg', lat: 53.55, lon: 10.00 },
+    { id: 'ST_Lyon',    name: 'Lyon',    lat: 45.75, lon:  4.83 },
+    { id: 'ST_Seville', name: 'Seville', lat: 37.39, lon: -5.99 },
   ];
-  kwpData={Paris:250,Madrid:320,Rome:410,Munich:180,Athens:500,Hamburg:150,Lyon:290,Seville:480};
+  kwpData = { Paris: 250, Madrid: 320, Rome: 410, Munich: 180, Athens: 500, Hamburg: 150, Lyon: 290, Seville: 480 };
 
-  const startDate=new Date('2021-01-01');
-  stations.forEach(({id,name,lat,lon})=>{
-    const dates=[],obs=[],corres=[];
-    for(let i=0;i<365*3;i++){
-      const d=new Date(startDate); d.setDate(d.getDate()+i);
-      for(let h=0;h<24;h++){
-        const dt=new Date(d); dt.setHours(h);
-        dates.push(dt.toISOString().slice(0,13)+':00:00');
-        const doy=(d-new Date(d.getFullYear(),0,0))/86400000;
-        const solar=Math.max(0,600*Math.sin(Math.PI*(doy-80)/365)*Math.sin(Math.PI*h/24)+(Math.random()-.5)*20);
-        const bias=(lat-45)*.8+(lon>0?3:-3)+(Math.random()-.5)*5;
-        obs.push(+(solar+(Math.random()-.5)*15).toFixed(1));
-        corres.push(+(solar+bias+(Math.random()-.5)*10).toFixed(1));
+  const startDate = new Date('2021-01-01');
+  stations.forEach(({ id, name, lat, lon }) => {
+    const dates = [], obs = [], corres = [];
+    for (let i = 0; i < 365 * 3; i++) {
+      const d = new Date(startDate);
+      d.setDate(d.getDate() + i);
+      for (let h = 0; h < 24; h++) {
+        const dt = new Date(d);
+        dt.setHours(h);
+        dates.push(dt.toISOString().slice(0, 13) + ':00:00');
+        const doy   = (d - new Date(d.getFullYear(), 0, 0)) / 86400000;
+        const solar = Math.max(0, 600 * Math.sin(Math.PI * (doy - 80) / 365) * Math.sin(Math.PI * h / 24) + (Math.random() - .5) * 20);
+        const bias  = (lat - 45) * .8 + (lon > 0 ? 3 : -3) + (Math.random() - .5) * 5;
+        obs.push(+(solar + (Math.random() - .5) * 15).toFixed(1));
+        corres.push(+(solar + bias + (Math.random() - .5) * 10).toFixed(1));
       }
     }
-    stationData[id]={lat,lon,name,dates,obs,corres};
+    stationData[id] = { lat, lon, name, dates, obs, corres };
   });
 
-  ['ghi','dhi','dni','poa','pac'].forEach(v=>{loadedFiles[`${v}_obs`]=[];loadedFiles[`${v}_corres`]=[];});
+  ['ghi', 'dhi', 'dni', 'poa', 'pac'].forEach(v => {
+    loadedFiles[`${v}_obs`]    = [];
+    loadedFiles[`${v}_corres`] = [];
+  });
   updateKwpVisibility();
   updateFileStatus();
   renderAll();
-  document.getElementById('data-status').textContent='✦ Demo data — load CSVs to replace';
-  document.getElementById('file-tags').innerHTML=
+  document.getElementById('data-status').textContent = '✦ Demo data — load CSVs to replace';
+  document.getElementById('file-tags').innerHTML =
     '<span style="color:var(--accent);font-size:.82rem">★ Showing synthetic demo data. Load real CSV files to replace.</span>';
 }
 
-const _origInit=initMap;
-window.initMap=function(){_origInit();loadDemoData();};
+const _origInit = initMap;
+window.initMap = function () { _origInit(); loadDemoData(); };
 </script>
+{% endraw %}
 </body>
 </html>
