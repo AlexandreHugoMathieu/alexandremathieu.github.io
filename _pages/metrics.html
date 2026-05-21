@@ -260,19 +260,19 @@ layout: none
         <div id="chart-scatter"></div>
       </div>
       <div class="chart-card">
-        <div class="chart-card-title">Monthly Average</div>
-        <div id="chart-monthly"></div>
+        <div class="chart-card-title">CDF Comparison</div>
+        <div id="chart-cdf"></div>
       </div>
     </div>
 
     <div class="charts-grid-2">
       <div class="chart-card">
-        <div class="chart-card-title">CDF Comparison</div>
-        <div id="chart-cdf"></div>
-      </div>
-      <div class="chart-card">
         <div class="chart-card-title">Mean Diurnal Cycle (avg by hour of day)</div>
         <div id="chart-diurnal"></div>
+      </div>
+	<div class="chart-card">
+        <div class="chart-card-title">Monthly Average</div>
+        <div id="chart-monthly"></div>
       </div>
     </div>
 
@@ -636,7 +636,12 @@ function openDetail(id) {
   const unit = VAR_UNITS[currentVar];
 
   document.getElementById('detail-name').textContent = `📍 ${s.name}`;
+  
   const kwpChip = isPac() && kwpData[s.name] ? [['kWp', kwpData[s.name]]] : [];
+  const validDates = s.dates.filter((d, i) => s.obs[i] != null && !isNaN(s.obs[i]));
+  const dateFrom   = validDates.length ? validDates[0].slice(0, 10) : '—';
+  const dateTo     = validDates.length ? validDates[validDates.length - 1].slice(0, 10) : '—';
+
   document.getElementById('detail-chips').innerHTML = [
     ['N', m.n],
     ['BIAS', `${m.bias.toFixed(2)} ${unit}`],
@@ -644,7 +649,8 @@ function openDetail(id) {
     ['R', isNaN(m.r) ? '—' : m.r.toFixed(3)],
     ['Mean Obs', `${m.meanObs.toFixed(1)} ${unit}`],
     ...kwpChip
-  ].map(([l, v]) => `<div class="chip"><div class="chip-label">${l}</div><div class="chip-value">${v}</div></div>`).join('');
+  ].map(([l, v]) => `<div class="chip"><div class="chip-label">${l}</div><div class="chip-value">${v}</div></div>`).join('')
+  + `<div class="chip" style="min-width:180px"><div class="chip-label">Period</div><div class="chip-value" style="font-size:.85rem">${dateFrom} → ${dateTo}</div></div>`;
 
   const panel = document.getElementById('detail-panel');
   panel.style.display = 'flex';
